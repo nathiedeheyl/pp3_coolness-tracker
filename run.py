@@ -18,8 +18,11 @@ def display_welcome_message():
     Displays a friendly and encouraging welcome message
     upon start of the program explaining it's purpose and how to use it.
     """
-    print("Welcome, Friend!")
+    print("\nWelcome, Friend! 🙂\n")
     print("You are in the right place")
-    print("if you want to work on lowering your resting heartbeat")
-    print("Track your progress, one day at a time")
-    print("towards a healthier heart 🌱")
+    print("if you want to work on lowering your resting heartbeat 🌱")
+    print("\nTrack your progress, one day at a time ⏱️")
+    print("towards a healthier heart 🌱\n")
+
+
+display_welcome_message()
