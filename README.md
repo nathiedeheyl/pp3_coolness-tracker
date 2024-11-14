@@ -65,3 +65,8 @@ Set up:
 | print statement too long | ![flake8 Validation 1](assets/images/testing/flake8_1.png) | Divided print statement in several lines |
 </details>
 
+## Credits 
+
+### Ressources 
+
+- YouTube tutorial on menus in python using a while true loop [Source](https://www.youtube.com/watch?v=ZBx7oWCJ4aY)
