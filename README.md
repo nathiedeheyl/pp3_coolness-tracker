@@ -62,6 +62,6 @@ Set up:
 
 | **Bug Description** | **Screenshot** | **Fix** | 
 |---------------------|----------------|---------|
-| 
+| print statement too long | ![flake8 Validation 1](assets/images/testing/flake8_1.png) | Divided print statement in several lines |
 </details>
 
