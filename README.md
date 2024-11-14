@@ -45,6 +45,15 @@ This application is designed to help the user understand the correlation between
 ![Process Flowchart](assets/images/python_program_flowchart_1.png)  
 [Link to image in Google Drive for better resolution](https://drive.google.com/file/d/1ttHliz-kDCG_2PlvI5EhpljxHg-oFdWm/view?usp=drive_link)
 
+<details>
+<summary>Log of progress and notes (personal)</summary>
+Set up: 
+1. Import Libraries: Bring in gspread to manage Google Sheets and Credentials for secure access.
+2. Set Permissions with a Scope: Define what parts of Google Sheets and Drive the program is allowed to access.
+3. Load Credentials: Use a creds.json file (generated when setting up API) to load the authorization key and apply the defined permissions.
+4. Authorize and Open Sheet: Authorize access to Google Sheets with gspread, then open a specific sheet by name ('coolness_tracker' in my case).
+</details>
+
 ## Features
 
 ## Testing
@@ -55,3 +64,4 @@ This application is designed to help the user understand the correlation between
 |---------------------|----------------|---------|
 | 
 </details>
+
