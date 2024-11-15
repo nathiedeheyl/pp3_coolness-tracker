@@ -69,6 +69,7 @@ Set up:
 |---------------------|----------------|---------|
 | print statement too long | ![flake8 validation issue 1](assets/images/testing/flake8_1.png) | Divided print statement in several lines |
 | Error when inputtin uppercase or spaces in start menu | ![start menu input issue](assets/images/testing/bug_1.png) | add .strip() and .lower() methods to input field: ```instruction_choice = input("Do you need instructions? ").strip().lower()``` |
+| Input upon main_menu redirects to start_menu instaed of displaying main_choice options | ![main menu input issue](assets/images/testing/bug_2.png) | add return statement to main_menu function; remove start_menu loop; comment out validate to proceed to main_menu after instructions; remove main_menu call from elif "no" to jump instructions; |
 </details>
 
 ## Credits 

@@ -1,6 +1,6 @@
 import gspread
 from google.oauth2.service_account import Credentials
-import time
+# import time
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -83,75 +83,78 @@ def main_menu():
         else:
             print()
             print("OPTION NOT AVAILABLE!")
-            print("Please type in either 'a', 'b' 'x'")
+            print("Please type in either 'a', 'b', or 'x'")
 
 
 def main():
     """
-    Run all program function
+    Run all program functions
     """
     display_welcome_message()
 
     # Run Start Menu:
-    while True:
-        start_choice = start_menu()
 
-        if start_choice == 'yes':
-            print()
-            print("--- How to use this program ---")
-            print()
-            print("We recommend using a smart wearable or similar.")
-            print()
-            print("At the end of each day, enter your daily stats: ")
-            print("    • Lowest heart rate during your last sleep")
-            print("    • Total minutes of cardio exercises of that day")
-            print("    • Total minutes of intentional breathwork in that day")
-            print()
-            print("The programm will let you choose between: Enter your data")
-            print("Or request an analysis of your current health state.")
-            print()
-            print("You can always return to the main menu.")
-            print()
-            print("Restart the program to see the instructions again.")
+    start_choice = start_menu()
 
-            # Proceed to main menu confirmation
-            while True:
-                print("\nProceed to main?")
-                proceed_main = input("Press 'y' and ENTER:\n").strip().lower()
-                if proceed_main == 'y':
-                    main_menu()
-                    break
-                else:
-                    print("Invalid input. Please press 'y' to proceed.")
+    if start_choice == 'yes':
+        print()
+        print("--- How to use this program ---")
+        print()
+        print("We recommend using a smart wearable or similar.")
+        print()
+        print("At the end of each day, enter your daily stats: ")
+        print("    • Lowest heart rate during your last sleep")
+        print("    • Total minutes of cardio exercises of that day")
+        print("    • Total minutes of intentional breathwork in that day")
+        print()
+        print("The program will let you choose between: Enter your data")
+        print("Or request an analysis of your current health state.")
+        print()
+        print("You can always return to the main menu.")
+        print()
+        print("Restart the program to see the instructions again.")
 
-        elif start_choice == 'no':
-            print("Redirecting to Main Menu...")
-            time.sleep(3)
-            main_menu()
+        # Proceed to main menu confirmation
+        # while True:
+        print("\nProceed to main?")
+        input("Press ENTER:\n")
+# if proceed_main == 'y':
+#     main_menu()
+#     # break
+# else:
+#     print("Invalid input. Please press 'y' to proceed.")
 
-        elif start_choice == 'x':
-            print()
-            print("Bye! See you soon 🙂")
-            exit()
+    elif start_choice == 'no':
+        print("Redirecting to Main Menu...")
 
-    # Run Main Menu:
-    while True:
-        main_choice = main_menu()
+    elif start_choice == 'x':
+        print()
+        print("Bye! See you soon 🙂")
+        exit()
 
-        if main_choice == 'a':
-            print()
-            time.sleep(3)
-            print("You chose 'a'")
+    # Run Main Menu
+    main_choice = main_menu()
 
-        elif main_choice == 'b':
-            print()
-            time.sleep(3)
-            print("You chose 'b'")
+    if main_choice == 'a':
+        print()
+        print("You chose 'a'")
+        # data_input()
 
-        elif main_choice == 'x':
-            print()
-            print("Bye! See you soon 🙂")
-            exit()
+    elif main_choice == 'b':
+        print()
+        print("You chose 'b'")
+        exit()
+
+    elif main_choice == 'x':
+        print()
+        print("Bye! See you soon 🙂")
+        exit()
+
+
+# def data_input():
+#     print()
+#     print("You're going to be prompted to input your health stats here...")
+#     exit()
 
 
 main()
