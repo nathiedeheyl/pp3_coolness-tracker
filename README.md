@@ -62,7 +62,8 @@ Set up:
 
 | **Bug Description** | **Screenshot** | **Fix** | 
 |---------------------|----------------|---------|
-| print statement too long | ![flake8 Validation 1](assets/images/testing/flake8_1.png) | Divided print statement in several lines |
+| print statement too long | ![flake8 validation issue 1](assets/images/testing/flake8_1.png) | Divided print statement in several lines |
+| Error when inputtin uppercase or spaces in start menu | ![start menu input issue](assets/images/testing/bug_1.png) | add .strip() and .lower() methods to input field |
 </details>
 
 ## Credits 
@@ -70,3 +71,4 @@ Set up:
 ### Ressources 
 
 - YouTube tutorial on menus in python using a while true loop [Source](https://www.youtube.com/watch?v=ZBx7oWCJ4aY)
+- To learn about more python methods: [W3Schools](https://www.w3schools.com/python/ref_string_lower.asp)

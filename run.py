@@ -44,7 +44,7 @@ def start_menu():
         print("no = Jump to the next step")
         print("x = Exit the program")
 
-        instruction_choice = input("\nDo you want to see the instructions? ")
+        instruction_choice = input("\nDo you want to see the instructions? ").strip().lower()
 
         if instruction_choice in instruction_options:
             # break out of the loop by using the keyword break
@@ -75,9 +75,13 @@ if instruction_choice == 'yes':
     print("Or request an analysis of your current health state.")
     print()
     print("You can always return to the main menu.")
+    print()
+    print("Restart the program to see the instructions again")
+    # Give option to call main menu function
 
 # elif instruction_choice == 'no':
-    # Proceed to 'main menu'
+    # Redirect: Clicked no, wait
+    # Call main menu function
 
 elif instruction_choice == 'x':
     print()
