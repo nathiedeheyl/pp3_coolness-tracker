@@ -220,5 +220,11 @@ def get_health_stats():
             print("Invalid input! Please enter a number.")
             print()
 
+    return heartrate, cardio_min, breathing
+
+
+def update_worksheet():
+    print("Update completing...")
+
 
 main()
