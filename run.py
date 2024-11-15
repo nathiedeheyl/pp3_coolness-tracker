@@ -86,69 +86,6 @@ def main_menu():
             print("Please type in either 'a', 'b', or 'x'")
 
 
-def main():
-    """
-    Run all program functions
-    """
-    display_welcome_message()
-
-    # Run Start Menu:
-
-    start_choice = start_menu()
-
-    if start_choice == 'yes':
-        print()
-        print("--- How to use this program ---")
-        print()
-        print("We recommend using a smart wearable or similar.")
-        print()
-        print("At the end of each day, enter your daily stats: ")
-        print("    • Lowest heart rate during your last sleep")
-        print("    • Total minutes of cardio exercises of that day")
-        print("    • Total minutes of intentional breathwork in that day")
-        print()
-        print("The program will let you choose between: Enter your data")
-        print("Or request an analysis of your current health state.")
-        print()
-        print("You can always return to the main menu.")
-        print()
-        print("Restart the program to see the instructions again.")
-
-        # Proceed to main menu confirmation
-        # while True:
-        print("\nProceed to main?")
-        input("Press ENTER:\n")
-# if proceed_main == 'y':
-#     main_menu()
-#     # break
-# else:
-#     print("Invalid input. Please press 'y' to proceed.")
-
-    elif start_choice == 'no':
-        print("Redirecting to Main Menu...")
-
-    elif start_choice == 'x':
-        print()
-        print("Bye! See you soon 🙂")
-        exit()
-
-    # Run Main Menu
-    main_choice = main_menu()
-
-    if main_choice == 'a':
-        get_health_stats()
-
-    elif main_choice == 'b':
-        print()
-        print("You chose 'b'")
-        exit()
-
-    elif main_choice == 'x':
-        print()
-        print("Bye! See you soon 🙂")
-        exit()
-
-
 def get_health_stats():
     """
     Get 3 key health metrics from the user, convert all string data to integers
@@ -225,6 +162,65 @@ def get_health_stats():
 
 def update_worksheet():
     print("Update completing...")
+
+
+def main():
+    """
+    Run all program functions
+    """
+    display_welcome_message()
+
+    # Run Start Menu:
+
+    start_choice = start_menu()
+
+    if start_choice == 'yes':
+        print()
+        print("--- How to use this program ---")
+        print()
+        print("We recommend using a smart wearable or similar.")
+        print()
+        print("At the end of each day, enter your daily stats: ")
+        print("    • Lowest heart rate during your last sleep")
+        print("    • Total minutes of cardio exercises of that day")
+        print("    • Total minutes of intentional breathwork in that day")
+        print()
+        print("The program will let you choose between: Enter your data")
+        print("Or request an analysis of your current health state.")
+        print()
+        print("You can always return to the main menu.")
+        print()
+        print("Restart the program to see the instructions again.")
+
+        # Proceed to main menu confirmation
+        # while True:
+        print("\nProceed to main?")
+        input("Press ENTER:\n")
+
+    elif start_choice == 'no':
+        print("Redirecting to Main Menu...")
+
+    elif start_choice == 'x':
+        print()
+        print("Bye! See you soon 🙂")
+        exit()
+
+    # Run Main Menu
+
+    main_choice = main_menu()
+
+    if main_choice == 'a':
+        heartrate, cardio_min, breathing = get_health_stats()
+
+    elif main_choice == 'b':
+        print()
+        print("You chose 'b'")
+        exit()
+
+    elif main_choice == 'x':
+        print()
+        print("Bye! See you soon 🙂")
+        exit()
 
 
 main()
