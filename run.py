@@ -34,7 +34,7 @@ display_welcome_message()
 
 
 def start_menu():
-    instruction_options = ('yes', 'no', 'x')
+    start_options = ('yes', 'no', 'x')
 
     while True:
         print()
@@ -44,12 +44,12 @@ def start_menu():
         print("no = Jump to the next step")
         print("x = Exit the program")
 
-        instruction_choice = input("\nDo you want to see the instructions? ").strip().lower()
+        start_choice = input("\nDo you need instructions? ").strip().lower()
 
-        if instruction_choice in instruction_options:
+        if start_choice in start_options:
             # break out of the loop by using the keyword break
             # or returning a value?
-            return instruction_choice
+            return start_choice
 
         else:
             print()
@@ -57,10 +57,10 @@ def start_menu():
             print("Choose 'yes', 'no' or 'x' to proceed.")
 
 
-instruction_choice = start_menu()
+start_choice = start_menu()
 
 
-if instruction_choice == 'yes':
+if start_choice == 'yes':
     print()
     print("--- How to use this program ---")
     print()
@@ -79,11 +79,11 @@ if instruction_choice == 'yes':
     print("Restart the program to see the instructions again")
     # Give option to call main menu function
 
-# elif instruction_choice == 'no':
+# elif start_choice == 'no':
     # Redirect: Clicked no, wait
     # Call main menu function
 
-elif instruction_choice == 'x':
+elif start_choice == 'x':
     print()
     print("Bye! See you soon 🙂")
     exit()
