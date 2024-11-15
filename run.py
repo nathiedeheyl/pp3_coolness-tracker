@@ -138,7 +138,7 @@ def main():
     if main_choice == 'a':
         print()
         print("You chose 'a'")
-        # data_input()
+        get_health_stats()
 
     elif main_choice == 'b':
         print()
@@ -151,10 +151,34 @@ def main():
         exit()
 
 
-# def data_input():
-#     print()
-#     print("You're going to be prompted to input your health stats here...")
-#     exit()
+def get_health_stats():
+    """
+    Get health data from the user.
+    """
+    print()
+    print("You will now be asked for 3 key metrics.")
+    print("Follow the prompts one after another to enter your health data.")
+    print()
+    print("Please enter the lowest heart rate during your last night's sleep.")
+    print("The number should be between 40-110.")
+    print()
+
+    heartrate_str = input("Enter heartrate here: ")
+    print(f"The data provided is {heartrate_str}")
+
+    print()
+    print("Please enter the total minutes of cardio exercice of today.")
+    print()
+
+    cardio_str = input("Enter exercice minutes: ")
+    print(f"The data provided is {cardio_str}")
+
+    print()
+    print("Please enter the total minutes of minful braethwork of today.")
+    print()
+
+    breathwork_str = input("Enter mindful breathing minutes: ")
+    print(f"The data provided is {breathwork_str}")
 
 
 main()
