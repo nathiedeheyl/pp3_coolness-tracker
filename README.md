@@ -47,7 +47,8 @@ This application is designed to help the user understand the correlation between
 
 <details>
 <summary>Log of progress and notes (personal)</summary>
-Set up: 
+Set up:
+
 1. Import Libraries: Bring in gspread to manage Google Sheets and Credentials for secure access.
 2. Set Permissions with a Scope: Define what parts of Google Sheets and Drive the program is allowed to access.
 3. Load Credentials: Use a creds.json file (generated when setting up API) to load the authorization key and apply the defined permissions.
@@ -55,6 +56,10 @@ Set up:
 </details>
 
 ## Features
+<details>
+<summary>List of features</summary>
+• Welcome message and start menu
+</details>
 
 ## Testing
 <details>
@@ -63,12 +68,13 @@ Set up:
 | **Bug Description** | **Screenshot** | **Fix** | 
 |---------------------|----------------|---------|
 | print statement too long | ![flake8 validation issue 1](assets/images/testing/flake8_1.png) | Divided print statement in several lines |
-| Error when inputtin uppercase or spaces in start menu | ![start menu input issue](assets/images/testing/bug_1.png) | add .strip() and .lower() methods to input field |
+| Error when inputtin uppercase or spaces in start menu | ![start menu input issue](assets/images/testing/bug_1.png) | add .strip() and .lower() methods to input field: ```instruction_choice = input("Do you need instructions? ").strip().lower()``` |
 </details>
 
 ## Credits 
 
-### Ressources 
-
+<details>
+<summary>Ressources</summary>
 - YouTube tutorial on menus in python using a while true loop [Source](https://www.youtube.com/watch?v=ZBx7oWCJ4aY)
-- To learn about more python methods: [W3Schools](https://www.w3schools.com/python/ref_string_lower.asp)
+- To learn about more python methods, for input validation e.g.: [W3Schools](https://www.w3schools.com/python/ref_string_lower.asp)
+</details>
