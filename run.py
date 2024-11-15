@@ -136,8 +136,6 @@ def main():
     main_choice = main_menu()
 
     if main_choice == 'a':
-        print()
-        print("You chose 'a'")
         get_health_stats()
 
     elif main_choice == 'b':
@@ -153,7 +151,10 @@ def main():
 
 def get_health_stats():
     """
-    Get health data from the user.
+    Get 3 key health metrics from the user, convert all string data to integers
+    and validate using try/except to ensure numeric value
+    within a specified range, handle ValueError and prompt user
+    to re-enter value if input was incorrect.
     """
     print()
     print("You will now be asked for 3 key metrics.")
@@ -163,22 +164,61 @@ def get_health_stats():
     print("The number should be between 40-110.")
     print()
 
-    heartrate_str = input("Enter heartrate here: ")
-    print(f"The data provided is {heartrate_str}")
+    while True:
+        heartrate_str = input("Enter heartrate here: ").strip()
+        try:
+            heartrate = int(heartrate_str)
+            if 40 <= heartrate <= 120:
+                break
+            else:
+                print()
+                print("Invalid input! Please enter a number between 40 - 120.")
+                print("In case of uncertainty, visit your doctor.")
+                print()
+        except ValueError:
+            print()
+            print("Invalid input! Please enter a number.")
+            print()
 
     print()
     print("Please enter the total minutes of cardio exercice of today.")
     print()
 
-    cardio_str = input("Enter exercice minutes: ")
-    print(f"The data provided is {cardio_str}")
+    while True:
+        cardio_str = input("Enter exercice minutes: ").strip()
+        try:
+            cardio_min = int(cardio_str)
+            if 0 <= cardio_min <= 1440:
+                break
+            else:
+                print()
+                print("Invalid input! Please enter the total minutes you")
+                print("have spent performing cardiovascular exercise today.")
+                print()
+        except ValueError:
+            print()
+            print("Invalid input! Please enter a number.")
+            print()
 
     print()
     print("Please enter the total minutes of minful braethwork of today.")
     print()
 
-    breathwork_str = input("Enter mindful breathing minutes: ")
-    print(f"The data provided is {breathwork_str}")
+    while True:
+        breathwork_str = input("Enter mindful breathing minutes: ").strip()
+        try:
+            breathing = int(breathwork_str)
+            if 0 <= breathing <= 1440:
+                break
+            else:
+                print()
+                print("Invalid input! Please enter the total minutes")
+                print("you have spent doing mindful breathwork today.")
+                print()
+        except ValueError:
+            print()
+            print("Invalid input! Please enter a number.")
+            print()
 
 
 main()

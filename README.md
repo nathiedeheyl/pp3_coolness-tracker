@@ -59,6 +59,7 @@ Set up:
 <details>
 <summary>List of features</summary>
 • Welcome message and start menu
+• Data validation: Regular resting heart rate [Source](https://www.mayoclinic.org/healthy-lifestyle/fitness/expert-answers/heart-rate/faq-20057979#:~:text=Answer%20From%20Edward%20R.%20Laskowski,to%20100%20beats%20per%20minute.); Maximum cardio minutes [Source](https://odphp.health.gov/our-work/nutrition-physical-activity/physical-activity-guidelines/current-guidelines/top-10-things-know) - But I decided to go a maximum input of 24h = 1.440 min. as for the breathwork minutes
 </details>
 
 ## Testing
@@ -70,6 +71,7 @@ Set up:
 | print statement too long | ![flake8 validation issue 1](assets/images/testing/flake8_1.png) | Divided print statement in several lines |
 | Error when inputtin uppercase or spaces in start menu | ![start menu input issue](assets/images/testing/bug_1.png) | add .strip() and .lower() methods to input field: ```instruction_choice = input("Do you need instructions? ").strip().lower()``` |
 | Input upon main_menu redirects to start_menu instaed of displaying main_choice options | ![main menu input issue](assets/images/testing/bug_2.png) | add return statement to main_menu function; remove start_menu loop; comment out validate to proceed to main_menu after instructions; remove main_menu call from elif "no" to jump instructions; |
+| health data input validation error | ![output on display error](assets/images/testing/bug_3.png) | put conversion ```int(heartrate_str)``` inside try/except code and wrap everything in a loop to give user a chance to put in right heartrate upon mistake |
 </details>
 
 ## Credits 
