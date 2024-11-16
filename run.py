@@ -181,10 +181,13 @@ def update_worksheets(data):
     cardio_worksheet.append_row([timestamp, cardio_min])
     breathwork_worksheet.append_row([timestamp, breath_min])
 
-    print("Spreadsheet has been updated:")
-    print(f"Data updated to heartrate worksheet: {[timestamp, heartrate]}")
-    print(f"Data updated to cardio worksheet: {[timestamp, cardio_min]}")
-    print(f"Data updated to breathwork worksheet: {[timestamp, breath_min]}")
+    print("Heartrate worksheet updated...")
+    print()
+    print("Cardio worksheet updated...")
+    print()
+    print("Breathwork worksheet updated...")
+    print()
+    print("Spreadsheet has been successfully updated.")
 
 
 def main():
@@ -228,23 +231,25 @@ def main():
         print("Bye! See you soon 🙂")
         exit()
 
-    # Run Main Menu
+    # Run Main Menu Loop
 
-    main_choice = main_menu()
+    while True:
+        main_choice = main_menu()
 
-    if main_choice == 'a':
-        heartrate, cardio_min, breath_min = get_health_stats()
-        update_worksheets((heartrate, cardio_min, breath_min))
+        if main_choice == 'a':
+            heartrate, cardio_min, breath_min = get_health_stats()
+            update_worksheets((heartrate, cardio_min, breath_min))
+            print("\nReturning to Main Menu...\n")
 
-    elif main_choice == 'b':
-        print()
-        print("You chose 'b'")
-        exit()
+        elif main_choice == 'b':
+            print()
+            print("You chose 'b'")
+            exit()
 
-    elif main_choice == 'x':
-        print()
-        print("Bye! See you soon 🙂")
-        exit()
+        elif main_choice == 'x':
+            print()
+            print("Bye! See you soon 🙂")
+            exit()
 
 
 main()
