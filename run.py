@@ -1,6 +1,6 @@
 import gspread
 from google.oauth2.service_account import Credentials
-# import time
+import datetime
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -90,7 +90,7 @@ def get_health_stats():
     """
     Get 3 key health metrics from the user, convert all string data to integers
     and validate using try/except to ensure numeric value
-    within a specified range, handle ValueError and prompt user
+    within a specified range, handle ValueError and a loop to prompt user
     to re-enter value if input was incorrect.
     """
     print()
@@ -144,8 +144,8 @@ def get_health_stats():
     while True:
         breathwork_str = input("Enter mindful breathing minutes: ").strip()
         try:
-            breathing = int(breathwork_str)
-            if 0 <= breathing <= 1440:
+            breath_min = int(breathwork_str)
+            if 0 <= breath_min <= 1440:
                 break
             else:
                 print()
@@ -157,11 +157,34 @@ def get_health_stats():
             print("Invalid input! Please enter a number.")
             print()
 
-    return heartrate, cardio_min, breathing
+    return heartrate, cardio_min, breath_min
 
 
-def update_worksheet():
-    print("Update completing...")
+def update_worksheets(data):
+    """
+    Update spreadsheet, add a new row to each worksheet
+    with the corresponding data provided by the user,
+    including a timestamp of the date of the data entry.
+    """
+    heartrate, cardio_min, breath_min = data
+
+    print("Updating worksheets...")
+
+    # Open the corresponding worksheets
+    heartrate_worksheet = SHEET.worksheet("heartrate")
+    cardio_worksheet = SHEET.worksheet("cardio")
+    breathwork_worksheet = SHEET.worksheet("breathwork")
+
+    # Add row to each worksheet with corresponding data
+    timestamp = datetime.datetime.now().strftime("%y-%m-%d")
+    heartrate_worksheet.append_row([timestamp, heartrate])
+    cardio_worksheet.append_row([timestamp, cardio_min])
+    breathwork_worksheet.append_row([timestamp, breath_min])
+
+    print("Spreadsheet has been updated:")
+    print(f"Data updated to heartrate worksheet: {[timestamp, heartrate]}")
+    print(f"Data updated to cardio worksheet: {[timestamp, cardio_min]}")
+    print(f"Data updated to breathwork worksheet: {[timestamp, breath_min]}")
 
 
 def main():
@@ -210,7 +233,8 @@ def main():
     main_choice = main_menu()
 
     if main_choice == 'a':
-        heartrate, cardio_min, breathing = get_health_stats()
+        heartrate, cardio_min, breath_min = get_health_stats()
+        update_worksheets((heartrate, cardio_min, breath_min))
 
     elif main_choice == 'b':
         print()
