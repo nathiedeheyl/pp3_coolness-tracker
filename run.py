@@ -1,6 +1,7 @@
 import gspread
 from google.oauth2.service_account import Credentials
 import datetime
+import time
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -181,13 +182,17 @@ def update_worksheets(data):
     cardio_worksheet.append_row([timestamp, cardio_min])
     breathwork_worksheet.append_row([timestamp, breath_min])
 
+    print()
     print("Heartrate worksheet updated...")
     print()
+    time.sleep(2)
     print("Cardio worksheet updated...")
     print()
+    time.sleep(2)
     print("Breathwork worksheet updated...")
     print()
     print("Spreadsheet has been successfully updated.")
+    time.sleep(2)
 
 
 def main():
@@ -240,6 +245,7 @@ def main():
             heartrate, cardio_min, breath_min = get_health_stats()
             update_worksheets((heartrate, cardio_min, breath_min))
             print("\nReturning to Main Menu...\n")
+            time.sleep(2)
 
         elif main_choice == 'b':
             print()
