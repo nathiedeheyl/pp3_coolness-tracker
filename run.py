@@ -45,7 +45,7 @@ def start_menu():
         print("no = Jump to Main Menu")
         print("x = Exit the program")
 
-        start_choice = input("\nDo you need instructions? ").strip().lower()
+        start_choice = input("\nDo you need instructions?\n").strip().lower()
 
         if start_choice in start_options:
             return start_choice
@@ -76,7 +76,7 @@ def main_menu():
         print("x - Exit program")
         print()
 
-        main_choice = input("\nOption: ").strip().lower()
+        main_choice = input("\nOption:\n").strip().lower()
 
         if main_choice in main_options:
             return main_choice
@@ -103,7 +103,7 @@ def get_health_stats():
     print()
 
     while True:
-        heartrate_str = input("Enter heartrate here: ").strip()
+        heartrate_str = input("Enter heartrate here:\n").strip()
         try:
             heartrate = int(heartrate_str)
             if 40 <= heartrate <= 120:
@@ -123,7 +123,7 @@ def get_health_stats():
     print()
 
     while True:
-        cardio_str = input("Enter exercice minutes: ").strip()
+        cardio_str = input("Enter exercice minutes:\n").strip()
         try:
             cardio_min = int(cardio_str)
             if 0 <= cardio_min <= 1440:
@@ -143,7 +143,7 @@ def get_health_stats():
     print()
 
     while True:
-        breathwork_str = input("Enter mindful breathing minutes: ").strip()
+        breathwork_str = input("Enter mindful breathing minutes:\n").strip()
         try:
             breath_min = int(breathwork_str)
             if 0 <= breath_min <= 1440:
