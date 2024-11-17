@@ -204,10 +204,18 @@ def get_weekly_stats():
     time.sleep(0)
 
     heartrate_total = SHEET.worksheet("heartrate").get_all_values()
-    heartrate_weekly = [row[1] for row in heartrate_total[-7:]]
+    heartrate_weekly = [int(row[1]) for row in heartrate_total[-7:]]
     print(f"Last 7 heartrate values: {heartrate_weekly}")
 
-    return heartrate_weekly
+    cardio_total = SHEET.worksheet("cardio").get_all_values()
+    cardio_weekly = [int(row[1]) for row in cardio_total[-7:]]
+    print(f"Last 7 entries of min of cardio: {cardio_weekly}")
+
+    breathing_total = SHEET.worksheet("breathwork").get_all_values()
+    breathing_weekly = [int(row[1]) for row in breathing_total[-7:]]
+    print(f"Last 7 entries of min of mindful breathwork: {breathing_weekly}")
+
+    return heartrate_weekly, cardio_weekly, breathing_weekly
 
 
 def main():
@@ -262,7 +270,7 @@ def main():
             time.sleep(2)
 
         elif main_choice == 'b':
-            heartrate_weekly = get_weekly_stats()
+            heartrate_weekly, cardio_weekly, breathing_weekly = get_weekly_stats()
             print("\nGo back to Main Menu?")
             input("Press ENTER\n")
 
