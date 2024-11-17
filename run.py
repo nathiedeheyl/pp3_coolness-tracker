@@ -214,14 +214,13 @@ def calculate_weekly_stats():
 
     cardio_recent = SHEET.worksheet("cardio").get_all_values()
     cardio_weekly = [int(row[1]) for row in cardio_recent[-7:]]
-    total_cardio_hours = sum(cardio_weekly) / 60
-    print()
-    print(f"with a total of {total_cardio_hours} hours of cardio")
+    total_cardio_hours = sum(cardio_weekly) // 60
+    leftover_cardio_mins = total_cardio_hours % 60
+    print(f"with a total of {total_cardio_hours} hours and {leftover_cardio_mins} minutes of cardio")
 
     breathing_recent = SHEET.worksheet("breathwork").get_all_values()
     breathing_weekly = [int(row[1]) for row in breathing_recent[-7:]]
     total_breath_mins = sum(breathing_weekly)
-    print()
     print(f"and {total_breath_mins} minutes of relaxing, mindful breathwork.")
 
     return heartrate_average, total_cardio_hours, total_breath_mins
