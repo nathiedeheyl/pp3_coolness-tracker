@@ -195,6 +195,21 @@ def update_worksheets(data):
     time.sleep(2)
 
 
+def get_weekly_stats():
+    """
+    Get last 7 entries of data from worksheets
+    to calculate weekly average and total minutes per week.
+    """
+    print("\nCalculating averages... analyzing...\n")
+    time.sleep(0)
+
+    heartrate_total = SHEET.worksheet("heartrate").get_all_values()
+    heartrate_weekly = [row[1] for row in heartrate_total[-7:]]
+    print(f"Last 7 heartrate values: {heartrate_weekly}")
+
+    return heartrate_weekly
+
+
 def main():
     """
     Run all program functions
@@ -224,9 +239,8 @@ def main():
         print("Restart the program to see the instructions again.")
 
         # Proceed to main menu confirmation
-        # while True:
         print("\nProceed to main?")
-        input("Press ENTER:\n")
+        input("Press ENTER\n")
 
     elif start_choice == 'no':
         print("Redirecting to Main Menu...")
@@ -248,9 +262,9 @@ def main():
             time.sleep(2)
 
         elif main_choice == 'b':
-            print()
-            print("You chose 'b'")
-            exit()
+            heartrate_weekly = get_weekly_stats()
+            print("\nGo back to Main Menu?")
+            input("Press ENTER\n")
 
         elif main_choice == 'x':
             print()
