@@ -195,27 +195,36 @@ def update_worksheets(data):
     time.sleep(2)
 
 
-def get_weekly_stats():
+def calculate_weekly_stats():
     """
-    Get last 7 entries of data from worksheets
-    to calculate weekly average and total minutes per week.
+    Get last 7 entries of data from worksheets,
+    calculate weekly resting heartbeat average,
+    total hours of cardio and minutes of breathwork per week
+    and display the outcome as message to the user.
     """
     print("\nCalculating averages... analyzing...\n")
     time.sleep(0)
 
-    heartrate_total = SHEET.worksheet("heartrate").get_all_values()
-    heartrate_weekly = [int(row[1]) for row in heartrate_total[-7:]]
-    print(f"Last 7 heartrate values: {heartrate_weekly}")
+    heartrate_recent = SHEET.worksheet("heartrate").get_all_values()
+    heartrate_weekly = [int(row[1]) for row in heartrate_recent[-7:]]
+    heartrate_average = sum(heartrate_weekly) / len(heartrate_weekly)
+    print("Here's your weekly summary:")
+    print()
+    print(f"Your average resting heart rate was {heartrate_average} bpm,")
 
-    cardio_total = SHEET.worksheet("cardio").get_all_values()
-    cardio_weekly = [int(row[1]) for row in cardio_total[-7:]]
-    print(f"Last 7 entries of min of cardio: {cardio_weekly}")
+    cardio_recent = SHEET.worksheet("cardio").get_all_values()
+    cardio_weekly = [int(row[1]) for row in cardio_recent[-7:]]
+    total_cardio_hours = sum(cardio_weekly) / 60
+    print()
+    print(f"with a total of {total_cardio_hours} hours of cardio")
 
-    breathing_total = SHEET.worksheet("breathwork").get_all_values()
-    breathing_weekly = [int(row[1]) for row in breathing_total[-7:]]
-    print(f"Last 7 entries of min of mindful breathwork: {breathing_weekly}")
+    breathing_recent = SHEET.worksheet("breathwork").get_all_values()
+    breathing_weekly = [int(row[1]) for row in breathing_recent[-7:]]
+    total_breath_mins = sum(breathing_weekly)
+    print()
+    print(f"and {total_breath_mins} minutes of relaxing, mindful breathwork.")
 
-    return heartrate_weekly, cardio_weekly, breathing_weekly
+    return heartrate_average, total_cardio_hours, total_breath_mins
 
 
 def main():
@@ -270,7 +279,7 @@ def main():
             time.sleep(2)
 
         elif main_choice == 'b':
-            heartrate_weekly, cardio_weekly, breathing_weekly = get_weekly_stats()
+            heartrate_average, total_cardio_hours, total_breath_mins = calculate_weekly_stats()
             print("\nGo back to Main Menu?")
             input("Press ENTER\n")
 
