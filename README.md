@@ -1,5 +1,11 @@
 # Coolness tracker
+
+![Welcome message](assets/images/features/feature_1_welcome2.png)
+
 An assistant for lowering your resting heartbeat and live a calmer life.
+[Click here to access live project terminal](https://coolness-tracker-7669906b729c.herokuapp.com/).
+
+## Overview 
 
 **Project Overview: Lower your resting heartbeat**  
 This application helps users explore the relationship between cardiovascular exercise, mindful breathing, and resting heart rate. By tracking three key metrics (lowest resting heart rate during sleep, daily cardio minutes, and mindful breathwork minutes) users can gain insights into how their habits impact their overall well-being - because the lower the resting heartbeat, the more chill is life.
@@ -17,7 +23,7 @@ The data entered is stored anonymously, and the option for last week's analysis 
 <details>
 <summary>Flowchart.1</summary>
 
-![Process flowchart 1](assets/images/python_program_flowchart_1.png)
+![Process flowchart 1](assets/images/workflow/python_program_flowchart_1.png)
 
 [Link to process flowchart 1 for higher resolution](https://drive.google.com/file/d/1WOr0uh1Km6rs3N1jSxBHXMMrOjg33fCc/view?usp=sharing)
 
@@ -26,7 +32,7 @@ The data entered is stored anonymously, and the option for last week's analysis 
 <details>
 <summary>Flowchart.2</summary>
 
-![Process flowchart 1](assets/images/python_program_flowchart_2.png)
+![Process flowchart 1](assets/images/workflow/python_program_flowchart_2.png)
 
 [Link to process flowchart 2 for higher resolution](https://drive.google.com/file/d/1FIiiGRFyn7p4dhGeM7953NLfwcWvprex/view?usp=sharing)
 
@@ -71,25 +77,58 @@ The data entered is stored anonymously, and the option for last week's analysis 
 
 </details>
 
-## Features
-<details>
-<summary>List of features</summary>
-• Welcome message and start menu
-• Data validation: Regular resting heart rate [Source](https://www.mayoclinic.org/healthy-lifestyle/fitness/expert-answers/heart-rate/faq-20057979#:~:text=Answer%20From%20Edward%20R.%20Laskowski,to%20100%20beats%20per%20minute.); Maximum cardio minutes [Source](https://odphp.health.gov/our-work/nutrition-physical-activity/physical-activity-guidelines/current-guidelines/top-10-things-know) - But I decided to go a maximum input of 24h = 1.440 min. as for the breathwork minutes
-</details>
-
-## Technologies
-- Programming language: Python
-- Flake8 for code validation
-- gspread library for Google Sheets integration
-- Google API client installed with google-oauth2 using the Google Cloud Setup
-
 ## Deployment
+Before deploying, ensure you've completed the following:
+- Remove unnecessary imports used for testing that aren't needed in the final Heroku deployment.
+- Add a line using `\n` after input statements for technical reasons.
+- Update requirements.txt to include all dependencies using terminal command "pip3 freeze > requirements.txt"
+- Sign up for a Heroku account and link it to GitHub.
+- Add billing information to deploy and run apps on Heroku.
 
+Deployment steps after setting up account on Heroku:
+1. In the top-right corner of your Heroku Dashboard, click "New", then choose "Create new app" from the dropdown. (On first app deployment you'll see a button to select on the dashboard directly.)
+2. Enter a unique name for your app, select the region you live in or that is closest to you (USA or EU), and click "Create App".
+3. In your app’s Settings, select "Reveal Config Vars". Set "PORT" as the KEY and "8000" as the value, then click "Add".
+4. Add another Config Var. Set "CREDS" as the KEY, copy the creds.json file in your workspace and paste it into the VALUE field, then click "Add".
+5. Scroll down to the Buildpacks section and click "Add buildpack" to manage dependencies.
+6. Ensure the buildpacks are in the correct order: Python first, followed by Node.js.
+7. Navigate to the deploy section to choose deployment method.
+8. Under "Deployment method", select "Github".
+9. Confirm that you want to connect to Github. Sign in to Github via the pop-up window.
+10. After confirming you can search for your Github repository name by typing in the name of your repository, click "Search", and finally, "Connect" to link up the Heroku app to your Github repository code.
+11. Scroll down and navigate to "Deploy branch". Choose a branch to deploy. Optionally select "Enable Automatic Deploys".
+12. After deployment is completed, you receive a message "Your app was successfully deployed." Select "View" to open your deployed link.
+13. You will be automatically redirected to the running Mock Terminal.
+
+See live Project Terminal here: https://coolness-tracker-7669906b729c.herokuapp.com/
+
+See also [deployment documentation on Heroku's website](https://devcenter.heroku.com/articles/git). As well as [more information about cloning a Github repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository).
+
+## Features
+
+1. Start of the program
+
+    • Welcome message and start menu
+
+2. SOME FEATURE
+
+    • Data validation: Regular resting heart rate [Source](https://www.mayoclinic.org/healthy-lifestyle/fitness/expert-answers/heart-rate/faq-20057979#:~:text=Answer%20From%20Edward%20R.%20Laskowski,to%20100%20beats%20per%20minute.); Maximum cardio minutes [Source](https://odphp.health.gov/our-work/nutrition-physical-activity/physical-activity-guidelines/current-guidelines/top-10-things-know) - But I decided to go a maximum input of 24h = 1.440 min. as for the breathwork minutes
+
+### Future Features
 
 ## Testing
-<details>
-<summary>Bugs</summary>
+
+### Testing User Stories
+
+| **User story** | **Evaluation** |
+|----------------|----------------|
+| - | - |
+
+### Code validation
+
+### Manual testing
+
+### Bugs
 
 | **Bug Description** | **Screenshot** | **Fix** | 
 |---------------------|----------------|---------|
@@ -97,9 +136,12 @@ The data entered is stored anonymously, and the option for last week's analysis 
 | Error when inputtin uppercase or spaces in start menu | ![start menu input issue](assets/images/testing/bug_1.png) | add .strip() and .lower() methods to input field: ```instruction_choice = input("Do you need instructions? ").strip().lower()``` |
 | Input upon main_menu redirects to start_menu instaed of displaying main_choice options | ![main menu input issue](assets/images/testing/bug_2.png) | add return statement to main_menu function; remove start_menu loop; comment out validate to proceed to main_menu after instructions; remove main_menu call from elif "no" to jump instructions; |
 | health data input validation error | ![output on display error](assets/images/testing/bug_3.png) | put conversion ```int(heartrate_str)``` inside try/except code and wrap everything in a loop to give user a chance to put in right heartrate upon mistake |
-</details>
 
-## Future Features
+## Technologies
+- Programming language: Python
+- Flake8 for code validation
+- gspread library for Google Sheets integration
+- Google API client installed with google-oauth2 using the Google Cloud Setup
 
 ## Credits 
 
