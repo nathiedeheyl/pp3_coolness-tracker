@@ -1,11 +1,14 @@
-# How to lower your resting heartbeat 
+# Coolness tracker
+An assistant for lowering your resting heartbeat and live a calmer life.
 
 **Project Overview: Lower your resting heartbeat**  
-This application is designed to help the user understand the correlation between cardiovascular exercise, mindful breathing exercises, and resting heartbeat. With the help of a smart wearable, the user can monitor their biodata. Our goal is to keep things cool: The lower the resting heartbeat, the more chill is life. With this application, the user will be able to find the ideal amount of cardio and breathing exercises to lower their resting heartbeat to a desired level by tracking biodata and exercise minutes over time. The user will also have the ability to run a command to gain insights into the current data trends.
+This application helps users explore the relationship between cardiovascular exercise, mindful breathing, and resting heart rate. By tracking three key metrics (lowest resting heart rate during sleep, daily cardio minutes, and mindful breathwork minutes) users can gain insights into how their habits impact their overall well-being - because the lower the resting heartbeat, the more chill is life.
 
-**Key metrics** for this Python analysis are the user’s lowest heart rate during sleep, total minutes of cardiovascular exercise during the day, and total minutes of intentional breathing exercises.
+The data entered is stored anonymously, and the option for last week's analysis provides a clear summary of trends to encourage a healthier, more relaxed lifestyle.
 
-**Main Goal:** Analyze correlations between the user’s heart rate, cardiovascular exercise, and relaxation practices to identify how fitness and relaxation impact the user’s resting heart rate.
+**Key metrics** for this Python analysis are the user’s lowest heart rate during sleep, total minutes of cardiovascular exercise during the day, and total minutes of intentional breathing exercises during one day.
+
+**Main Goal:** Analyze the relationship between heart rate, cardiovascular activity, and relaxation practices to understand their impact on resting heart rate and overall well-being.
 
 ## User stories 
 
