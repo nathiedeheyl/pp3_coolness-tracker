@@ -198,7 +198,7 @@ def update_worksheets(data):
 def calculate_weekly_stats():
     """
     Get last 7 entries of data from worksheets,
-    calculate weekly resting heartbeat average,
+    calculate weekly resting heartbeat average (rounded),
     total hours of cardio and minutes of breathwork per week
     and display the outcome as message to the user.
     """
@@ -208,9 +208,11 @@ def calculate_weekly_stats():
     heartrate_recent = SHEET.worksheet("heartrate").get_all_values()
     heartrate_weekly = [int(row[1]) for row in heartrate_recent[-7:]]
     heartrate_average = sum(heartrate_weekly) / len(heartrate_weekly)
+    round_hr_average = round(heartrate_average)
+
     print("Here's your weekly summary:")
     print()
-    print(f"Your average resting heart rate was {heartrate_average} bpm,")
+    print(f"Your average resting heart rate was {round_hr_average} bpm,")
 
     cardio_recent = SHEET.worksheet("cardio").get_all_values()
     cardio_weekly = [int(row[1]) for row in cardio_recent[-7:]]
