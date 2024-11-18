@@ -203,14 +203,14 @@ def calculate_weekly_stats():
     and display the outcome as message to the user.
     """
     print("\nCalculating averages... analyzing...\n")
-    time.sleep(0)
+    time.sleep(2)
 
     heartrate_recent = SHEET.worksheet("heartrate").get_all_values()
     heartrate_weekly = [int(row[1]) for row in heartrate_recent[-7:]]
     heartrate_average = sum(heartrate_weekly) / len(heartrate_weekly)
     round_hr_average = round(heartrate_average)
 
-    print("Here's your weekly summary:")
+    print("Here's your summary of last week:")
     print()
     print(f"Your average resting heart rate was {round_hr_average} bpm,")
 
