@@ -78,6 +78,15 @@ The data entered is stored anonymously, and the option for last week's analysis 
 • Data validation: Regular resting heart rate [Source](https://www.mayoclinic.org/healthy-lifestyle/fitness/expert-answers/heart-rate/faq-20057979#:~:text=Answer%20From%20Edward%20R.%20Laskowski,to%20100%20beats%20per%20minute.); Maximum cardio minutes [Source](https://odphp.health.gov/our-work/nutrition-physical-activity/physical-activity-guidelines/current-guidelines/top-10-things-know) - But I decided to go a maximum input of 24h = 1.440 min. as for the breathwork minutes
 </details>
 
+## Technologies
+- Programming language: Python
+- Flake8 for code validation
+- gspread library for Google Sheets integration
+- Google API client installed with google-oauth2 using the Google Cloud Setup
+
+## Deployment
+
+
 ## Testing
 <details>
 <summary>Bugs</summary>
@@ -89,6 +98,8 @@ The data entered is stored anonymously, and the option for last week's analysis 
 | Input upon main_menu redirects to start_menu instaed of displaying main_choice options | ![main menu input issue](assets/images/testing/bug_2.png) | add return statement to main_menu function; remove start_menu loop; comment out validate to proceed to main_menu after instructions; remove main_menu call from elif "no" to jump instructions; |
 | health data input validation error | ![output on display error](assets/images/testing/bug_3.png) | put conversion ```int(heartrate_str)``` inside try/except code and wrap everything in a loop to give user a chance to put in right heartrate upon mistake |
 </details>
+
+## Future Features
 
 ## Credits 
 
