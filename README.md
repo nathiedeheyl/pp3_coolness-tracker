@@ -126,6 +126,14 @@ See also [deployment documentation on Heroku's website](https://devcenter.heroku
 
 ### Code validation
 
+| **Check** | **Description of Issue** | **Screenshot** |
+|----------------|---------------------|----------------|
+| - | 221: E501 line too long | ![validation screenshot 1](assets/images/testing/validation_1.png) |
+| - | 283: E501 line too long | ![validation screenshot 1](assets/images/testing/validation_2.png) |
+
+    - Error 1 is left unresolved for layout reasons in the display terminal.
+    - Error 2 cannot be fixed ... unless I shorten the variables?
+
 ### Manual testing
 
 ### Bugs
