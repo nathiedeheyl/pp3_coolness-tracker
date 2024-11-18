@@ -10,9 +10,34 @@ The data entered is stored anonymously, and the option for last week's analysis 
 
 **Main Goal:** Analyze the relationship between heart rate, cardiovascular activity, and relaxation practices to understand their impact on resting heart rate and overall well-being.
 
+## Workflow 
+<details>
+<summary>Process flowcharts</summary>
+
+<details>
+<summary>Flowchart.1</summary>
+
+![Process flowchart 1](assets/images/python_program_flowchart_1.png)
+
+[Link to process flowchart 1 for higher resolution](https://drive.google.com/file/d/1WOr0uh1Km6rs3N1jSxBHXMMrOjg33fCc/view?usp=sharing)
+
+</details>
+
+<details>
+<summary>Flowchart.2</summary>
+
+![Process flowchart 1](assets/images/python_program_flowchart_2.png)
+
+[Link to process flowchart 2 for higher resolution](https://drive.google.com/file/d/1FIiiGRFyn7p4dhGeM7953NLfwcWvprex/view?usp=sharing)
+
+</details>
+</details>
+
 ## User stories 
 
-**As a user …**
+<details>
+<summary>**As a user …**</summary>
+
 + …I want a welcome message when I start the program that explains the purpose of the application and how it can benefit me.
 
 + …I want to easily understand how to input my data, so I can log my information without confusion or mistakes.
@@ -44,27 +69,6 @@ The data entered is stored anonymously, and the option for last week's analysis 
 
 !!!
 
-## Workflow 
-<details>
-<summary>Process flowcharts</summary>
-
-<details>
-<summary>Flowchart.1</summary>
-
-![Process flowchart 1](assets/images/python_program_flowchart_1.png)
-
-[Link to process flowchart 1 for higher resolution](https://drive.google.com/file/d/1WOr0uh1Km6rs3N1jSxBHXMMrOjg33fCc/view?usp=sharing)
-
-</details>
-
-<details>
-<summary>Flowchart.2</summary>
-
-![Process flowchart 1](assets/images/python_program_flowchart_2.png)
-
-[Link to process flowchart 2 for higher resolution](https://drive.google.com/file/d/1FIiiGRFyn7p4dhGeM7953NLfwcWvprex/view?usp=sharing)
-
-</details>
 </details>
 
 ## Features
@@ -89,7 +93,8 @@ The data entered is stored anonymously, and the option for last week's analysis 
 ## Credits 
 
 <details>
-<summary>Ressources</summary>
-- YouTube tutorial on menus in python using a while true loop [Source](https://www.youtube.com/watch?v=ZBx7oWCJ4aY)
-- To learn about more python methods, for input validation e.g.: [W3Schools](https://www.w3schools.com/python/ref_string_lower.asp)
+<summary>Resources</summary>
+- Code Institute's walkthrough project **Love Sandwiches** introduced me to most of the basic functions, module imports and methods.
+- As an initial inspiration on how to get started on my project idea I used a [YouTube tutorial](https://www.youtube.com/watch?v=ZBx7oWCJ4aY) that introduced how to use while true loops to build menus.
+- To learn about more python string methods, for the input and it's validation, the datetime module, list comprehensions, try/except, handling of tuples and more research about built-in functions I have mainly relied on the [W3Schools website](https://www.w3schools.com/python/), sometimes on [Stackoverflow](https://stackoverflow.com/).
 </details>
