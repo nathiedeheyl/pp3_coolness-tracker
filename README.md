@@ -45,17 +45,26 @@ The data entered is stored anonymously, and the option for last week's analysis 
 !!!
 
 ## Workflow 
-![Process Flowchart](assets/images/python_program_flowchart_1.png)  
-[Link to image in Google Drive for better resolution](https://drive.google.com/file/d/1ttHliz-kDCG_2PlvI5EhpljxHg-oFdWm/view?usp=drive_link)
+<details>
+<summary>Process flowcharts</summary>
 
 <details>
-<summary>Log of progress and notes (personal)</summary>
-Set up:
+<summary>Flowchart.1</summary>
 
-1. Import Libraries: Bring in gspread to manage Google Sheets and Credentials for secure access.
-2. Set Permissions with a Scope: Define what parts of Google Sheets and Drive the program is allowed to access.
-3. Load Credentials: Use a creds.json file (generated when setting up API) to load the authorization key and apply the defined permissions.
-4. Authorize and Open Sheet: Authorize access to Google Sheets with gspread, then open a specific sheet by name ('coolness_tracker' in my case).
+![Process flowchart 1](assets/images/python_program_flowchart_1.png)
+
+[Link to process flowchart 1 for higher resolution](https://drive.google.com/file/d/1WOr0uh1Km6rs3N1jSxBHXMMrOjg33fCc/view?usp=sharing)
+
+</details>
+
+<details>
+<summary>Flowchart.2</summary>
+
+![Process flowchart 1](assets/images/python_program_flowchart_2.png)
+
+[Link to process flowchart 2 for higher resolution](https://drive.google.com/file/d/1FIiiGRFyn7p4dhGeM7953NLfwcWvprex/view?usp=sharing)
+
+</details>
 </details>
 
 ## Features
