@@ -186,6 +186,7 @@ See also [deployment documentation on Heroku's website](https://devcenter.heroku
 | Error when inputtin uppercase or spaces in start menu | ![start menu input issue](assets/images/testing/bug_1.png) | add .strip() and .lower() methods to input field: ```instruction_choice = input("Do you need instructions? ").strip().lower()``` |
 | Input upon main_menu redirects to start_menu instaed of displaying main_choice options | ![main menu input issue](assets/images/testing/bug_2.png) | add return statement to main_menu function; remove start_menu loop; comment out validate to proceed to main_menu after instructions; remove main_menu call from elif "no" to jump instructions; |
 | health data input validation error | ![output on display error](assets/images/testing/bug_3.png) | put conversion ```int(heartrate_str)``` inside try/except code and wrap everything in a loop to give user a chance to put in right heartrate upon mistake |
+| Use of wrong emoji leads to display of other symbols in deployed version | ![output on display error](assets/images/testing/bug_4.png) | Replace with neutral emoji |
 
 ## Technologies
 - Programming language: Python

@@ -296,7 +296,7 @@ def main():
               "\nWe recommend using a smart wearable or similar 💍\n"
               "\nAt the end of each day, enter your daily stats: \n"
               "    • Lowest heart rate during your last sleep 💗\n"
-              "    • Total minutes of cardio exercises of that day 🏃‍♀️\n"
+              "    • Total minutes of cardio exercises of that day 🏃\n"
               "    • Total minutes of intentional breathwork in that day 🧘\n"
               "\nThe program will let you choose between: a) Enter your data\n"
               "or b) request an analysis of your current health state.\n"
