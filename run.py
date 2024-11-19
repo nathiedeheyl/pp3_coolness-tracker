@@ -58,7 +58,8 @@ def start_menu():
 
 def main_menu():
     """
-    Display main menu options to enter data or request analysis.
+    Display main menu options to enter data or request analysis
+    of last week's stats.
     """
     main_options = ('a', 'b', 'x')
 
@@ -96,6 +97,8 @@ def get_health_stats():
     print("You will now be asked for 3 key metrics.")
     print("Follow the prompts one after another to enter your health data.")
     print()
+    
+    # User data input of resting heart rate
     print("Please enter the lowest heart rate during your last night's sleep.")
     print("The number should be between 40-110.")
     print()
@@ -116,7 +119,7 @@ def get_health_stats():
             print("Invalid input! Please enter a number.")
             print()
 
-    print()
+    # User data input of daily minutes of cardio exercise
     print("Please enter the total minutes of cardio exercice of today.")
     print()
 
@@ -136,7 +139,7 @@ def get_health_stats():
             print("Invalid input! Please enter a number.")
             print()
 
-    print()
+    # User data input of daily minutes of mindful breathing
     print("Please enter the total minutes of minful braethwork of today.")
     print()
 
@@ -180,7 +183,7 @@ def update_worksheets(data):
     cardio_worksheet.append_row([timestamp, cardio_min])
     breathwork_worksheet.append_row([timestamp, breath_min])
 
-    print()
+    # Message of success to user
     print("Heartrate worksheet updated...")
     print()
     time.sleep(2)
@@ -323,9 +326,9 @@ def main():
     display_welcome_message()
 
     # Run Start Menu:
-
     start_choice = start_menu()
 
+    # Start Menu option handling
     if start_choice == 'yes':
         print()
         print("--- How to use this program ---")
@@ -357,10 +360,10 @@ def main():
         exit()
 
     # Run Main Menu Loop
-
     while True:
         main_choice = main_menu()
 
+        # Main Menu option handling
         if main_choice == 'a':
             heartrate, cardio_min, breath_min = get_health_stats()
             update_worksheets((heartrate, cardio_min, breath_min))
