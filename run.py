@@ -160,7 +160,7 @@ def update_worksheets(data):
     print("Cardio worksheet updated...\n")
     time.sleep(2)
     print("Breathwork worksheet updated...\n")
-    print("Spreadsheet has been successfully updated.\n")
+    print("Spreadsheet has been successfully updated ✅\n")
     time.sleep(2)
 
 
@@ -292,14 +292,14 @@ def main():
 
     # Start Menu option handling
     if start_choice == 'yes':
-        print("\n--- How to use this program ---\n"
-              "\nWe recommend using a smart wearable or similar.\n"
+        print("\n--- How to use this program 📋 ---\n"
+              "\nWe recommend using a smart wearable or similar 💍\n"
               "\nAt the end of each day, enter your daily stats: \n"
-              "    • Lowest heart rate during your last sleep\n"
-              "    • Total minutes of cardio exercises of that day\n"
-              "    • Total minutes of intentional breathwork in that day\n"
-              "\nThe program will let you choose between: Enter your data\n"
-              "or request an analysis of your current health state.\n"
+              "    • Lowest heart rate during your last sleep 💗\n"
+              "    • Total minutes of cardio exercises of that day 🏃‍♀️\n"
+              "    • Total minutes of intentional breathwork in that day 🧘\n"
+              "\nThe program will let you choose between: a) Enter your data\n"
+              "or b) request an analysis of your current health state.\n"
               "\nYou can always return to the main menu.\n"
               "\nRestart the program to see the instructions again.\n")
 
@@ -331,7 +331,7 @@ def main():
             hr_rounded = calculate_avr_heartrate()
             cardio_h, cardio_min = calculate_sum_cardio()
             breathwork_mins = calculate_sum_breathwork()
-            print("\nGood job! Keep tracking your stats for more insight.\n\n"
+            print("\nGood job! Keep tracking your stats for more insight 📝\n\n"
                   "\nGo back to Main Menu?\n")
             input("Press ENTER\n")
 
