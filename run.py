@@ -193,7 +193,7 @@ def calculate_avr_heartrate():
     if hr_week:
         hr_avr = sum(hr_week) / len(hr_week)
         hr_rounded = round(hr_avr)
-        print(f"Your average resting hear rate was {hr_avr_rd} bpm")
+        print(f"Your average resting hear rate was {hr_rounded} bpm")
     else:
         print("Not enough entries yet to calculate weekly average.")
 
@@ -208,38 +208,38 @@ def calculate_sum_cardio():
     """
     today = datetime.datetime.now()
 
-    # Get all values from cardio (crd) worksheet
-    crd_sheet = SHEET.worksheet("cardio").get_all_values()
+    # Get all values from cardio worksheet
+    cardio_sheet = SHEET.worksheet("cardio").get_all_values()
 
     # Exclude header from all values
-    crd_all = crd_sheet[1:]
+    cardio_all = cardio_sheet[1:]
 
     # Filter for entries of last 7 days
-    crd_week = []
-    for row in crd_all:
+    cardio_week = []
+    for row in cardio_all:
         tsmp_str = row[0]
         try:
             if len(row) > 1:
                 tsmp = datetime.datetime.strptime(tsmp_str, "%y-%m-%d")
                 if (today - tsmp).days <= 7:
-                    crd_week.append(int(row[1]))
+                    cardio_week.append(int(row[1]))
         except ValueError:
             print(f"Invalid data on row {row}. Check the spreadsheet.")
             continue
 
     # Return 0 when less than 7 days of entries
-    if not crd_week:
+    if not cardio_week:
         print("\nEntry for past 7 days of cardio exercise incomplete.\n\n"
               "Keep tracking your daily exercise mins to enable analysis.\n\n")
         return 0
 
     # Calculate total time of cardio exercise
-    crd_total = sum(crd_week)
-    crd_h = crd_total // 60
-    crd_min = crd_total % 60
-    print(f"\nwith {crd_h} hours and {crd_min} minutes of cardio\n\n")
+    cardio_total = sum(cardio_week)
+    cardio_h = cardio_total // 60
+    cardio_min = cardio_total % 60
+    print(f"\nwith {cardio_h} hours and {cardio_min} minutes of cardio\n")
 
-    return crd_h, crd_min
+    return cardio_h, cardio_min
 
 
 def calculate_sum_breathwork():
@@ -249,36 +249,36 @@ def calculate_sum_breathwork():
     """
     today = datetime.datetime.now()
 
-    # Get all values from breathwork (brw) worksheet
-    brw_sheet = SHEET.worksheet("breathwork").get_all_values()
+    # Get all values from breathwork (breathwork) worksheet
+    breathwork_sheet = SHEET.worksheet("breathwork").get_all_values()
 
     # Exclude header from all values
-    brw_all = brw_sheet[1:]
+    breathwork_all = breathwork_sheet[1:]
 
     # Filter for entries of last 7 days
-    brw_week = []
-    for row in brw_all:
+    breathwork_week = []
+    for row in breathwork_all:
         tsmp_str = row[0]
         try:
             if len(row) > 1:
                 tsmp = datetime.datetime.strptime(tsmp_str, "%y-%m-%d")
                 if (today - tsmp).days <= 7:
-                    brw_week.append(int(row[1]))
+                    breathwork_week.append(int(row[1]))
         except ValueError:
             print(f"\nInvalid data on row {row}. Check the spreadsheet.\n\n")
             continue
 
     # Return 0 when less than 7 days of entries
-    if not brw_week:
+    if not breathwork_week:
         print("\nEntry for past 7 days of breathing exercise incomplete.\n\n"
               "Keep tracking your daily mindfulnes mins to enable analysis.\n")
         return 0
 
     # Calculate total time of breathwork exercise
-    brw_mins = sum(brw_week)
-    print(f"\nand {brw_mins} minutes of relaxing, mindful breathwork.\n\n")
+    breathwork_mins = sum(breathwork_week)
+    print(f"and {breathwork_mins} minutes of relaxing, mindful breathwork.\n")
 
-    return brw_mins
+    return breathwork_mins
 
 
 def main():
@@ -329,10 +329,10 @@ def main():
             print("\nCalculating averages... analyzing...\n")
             time.sleep(2)
             hr_rounded = calculate_avr_heartrate()
-            crd_h, crd_min = calculate_sum_cardio()
-            brw_mins = calculate_sum_breathwork()
+            cardio_h, cardio_min = calculate_sum_cardio()
+            breathwork_mins = calculate_sum_breathwork()
             print("\nGood job! Keep tracking your stats for more insight.\n\n"
-                  "Go back to Main Menu?\n")
+                  "\nGo back to Main Menu?\n")
             input("Press ENTER\n")
 
         elif main_choice == 'x':
