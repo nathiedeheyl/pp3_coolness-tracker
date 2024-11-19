@@ -7,7 +7,7 @@ SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive.file",
     "https://www.googleapis.com/auth/drive"
-    ]
+]
 
 CREDS = Credentials.from_service_account_file('creds.json')
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
@@ -65,10 +65,8 @@ def main_menu():
     while True:
         print()
         print("** MAIN MENU **")
-        print()
-        print("What would you like to do next?")
-        print("Choose from option 'a' or 'b'")
-        print()
+        print("\nWhat would you like to do next?\n\n"
+              "Choose from option 'a' or 'b'\n")
         print("a - Enter your daily stats")
         print()
         print("b - Request an analysis of your health data")
@@ -195,37 +193,127 @@ def update_worksheets(data):
     time.sleep(2)
 
 
-def calculate_weekly_stats():
+def calculate_avr_heartrate():
     """
-    Get last 7 entries of data from worksheets,
-    calculate weekly resting heartbeat average (rounded),
-    total hours of cardio and minutes of breathwork per week
-    and display the outcome as message to the user.
+    Get heartrate worksheet data entries of last 7 days,
+    calculate weekly resting heartbeat average and round it;
+    display the outcome message to the user.
     """
-    print("\nCalculating averages... analyzing...\n")
-    time.sleep(2)
+    today = datetime.datetime.now()
 
-    heartrate_recent = SHEET.worksheet("heartrate").get_all_values()
-    heartrate_weekly = [int(row[1]) for row in heartrate_recent[-7:]]
-    heartrate_average = sum(heartrate_weekly) / len(heartrate_weekly)
-    round_hr_average = round(heartrate_average)
+    # Get all values from heartrate (hr) workseet
+    hr_sheet = SHEET.worksheet("heartrate").get_all_values()
 
-    print("Here's your summary of last week:")
+    # Exclude header from getting all values
+    hr_all = hr_sheet[1:]
+
+    # Filter for entries of last 7 days
+    hr_week = []
+    for row in hr_all:
+        tsmp_str = row[0]
+        try:
+            tsmp = datetime.datetime.strptime(tsmp_str, "%y-%m-%d")
+            if (today - tsmp).days <= 7:
+                hr_week.append(int(row[1]))
+        except ValueError:
+            print(f"Invalid time format: {tsmp_str}")
+
+    # Calculate average of last week's entries
+    if hr_week:
+        hr_avr = sum(hr_week) / len(hr_week)
+        hr_rounded = round(hr_avr)
+        print(f"Your average resting hear rate was {hr_avr_rd} bpm")
+    else:
+        print("Not enough entries yet to calculate weekly average.")
+
+    return hr_rounded
+
+
+def calculate_sum_cardio():
+    """
+    Get cardio worksheet data entries of last 7 days,
+    calculate the sum and display as total hours and minutes
+    to the user with modulo operation.
+    """
+    today = datetime.datetime.now()
+
+    # Get all values from cardio (crd) worksheet
+    crd_sheet = SHEET.worksheet("cardio").get_all_values()
+
+    # Exclude header from all values
+    crd_all = crd_sheet[1:]
+
+    # Filter for entries of last 7 days
+    crd_week = []
+    for row in crd_all:
+        tsmp_str = row[0]
+        try:
+            if len(row) > 1:
+                tsmp = datetime.datetime.strptime(tsmp_str, "%y-%m-%d")
+                if (today - tsmp).days <= 7:
+                    crd_week.append(int(row[1]))
+        except ValueError:
+            print(f"Invalid data on row {row}. Check the spreadsheet.")
+            continue
+
+    # Return 0 when less than 7 days of entries
+    if not crd_week:
+        print()
+        print("No valid entries found for past 7 days of cardio exercise.")
+        print()
+        print("Keep tracking your daily exercise minutes to enable analysis.")
+        return 0
+
+    # Calculate total time of cardio exercise
+    crd_total = sum(crd_week)
+    crd_h = crd_total // 60
+    crd_min = crd_total % 60
     print()
-    print(f"Your average resting heart rate was {round_hr_average} bpm,")
+    print(f"with {crd_h} hours and {crd_min} minutes of cardio")
 
-    cardio_recent = SHEET.worksheet("cardio").get_all_values()
-    cardio_weekly = [int(row[1]) for row in cardio_recent[-7:]]
-    total_cardio_hours = sum(cardio_weekly) // 60
-    leftover_cardio_mins = total_cardio_hours % 60
-    print(f"with a total of {total_cardio_hours} hours and {leftover_cardio_mins} minutes of cardio")
+    return crd_h, crd_min
 
-    breathing_recent = SHEET.worksheet("breathwork").get_all_values()
-    breathing_weekly = [int(row[1]) for row in breathing_recent[-7:]]
-    total_breath_mins = sum(breathing_weekly)
-    print(f"and {total_breath_mins} minutes of relaxing, mindful breathwork.")
 
-    return heartrate_average, total_cardio_hours, total_breath_mins
+def calculate_sum_breathwork():
+    """
+    Get breathwork worksheet data entries of last 7 days,
+    calculate the sum and display total as a message to the user.
+    """
+    today = datetime.datetime.now()
+
+    # Get all values from breathwork (brw) worksheet
+    brw_sheet = SHEET.worksheet("breathwork").get_all_values()
+
+    # Exclude header from all values
+    brw_all = brw_sheet[1:]
+
+    # Filter for entries of last 7 days
+    brw_week = []
+    for row in brw_all:
+        tsmp_str = row[0]
+        try:
+            if len(row) > 1:
+                tsmp = datetime.datetime.strptime(tsmp_str, "%y-%m-%d")
+                if (today - tsmp).days <= 7:
+                    brw_week.append(int(row[1]))
+        except ValueError:
+            print(f"Invalid data on row {row}. Check the spreadsheet.")
+            continue
+
+    # Return 0 when less than 7 days of entries
+    if not brw_week:
+        print()
+        print("No valid entries found for past 7 days of breathing exercise.")
+        print()
+        print("Keep tracking your daily mindfulnes mins to enable analysis.")
+        return 0
+
+    # Calculate total time of breathwork exercise
+    brw_mins = sum(brw_week)
+    print()
+    print(f"and {brw_mins} minutes of relaxing, mindful breathwork.")
+
+    return brw_mins
 
 
 def main():
@@ -257,7 +345,7 @@ def main():
         print("Restart the program to see the instructions again.")
 
         # Proceed to main menu confirmation
-        print("\nProceed to main?")
+        print("\nProceed to MAIN MENU?")
         input("Press ENTER\n")
 
     elif start_choice == 'no':
@@ -280,8 +368,15 @@ def main():
             time.sleep(2)
 
         elif main_choice == 'b':
-            heartrate_average, total_cardio_hours, total_breath_mins = calculate_weekly_stats()
-            print("\nGo back to Main Menu?")
+            print("\nCalculating averages... analyzing...\n")
+            time.sleep(2)
+            hr_rounded = calculate_avr_heartrate()
+            crd_h, crd_min = calculate_sum_cardio()
+            brw_mins = calculate_sum_breathwork()
+            print()
+            print("Good job! Keep tracking your daily stats for more insight.")
+            print()
+            print("Go back to Main Menu?")
             input("Press ENTER\n")
 
         elif main_choice == 'x':
