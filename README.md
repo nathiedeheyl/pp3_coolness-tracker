@@ -118,6 +118,8 @@ See also [deployment documentation on Heroku's website](https://devcenter.heroku
 
 - More detailed error handling on inputs: Individual error messages for empty inputs, negative number inputs, empty or whitespace inputs and so on.
 - Implement 'exit' option during input.
+- Handling invalid date format and skipping rows (unlikely to occur).
+- Handling error message if spreadsheet/worksheet are unavailable/deleted.
 
 ## Testing
 
@@ -133,11 +135,48 @@ See also [deployment documentation on Heroku's website](https://devcenter.heroku
 |----------------|---------------------|----------------|
 | - | 221: E501 line too long | ![validation screenshot 1](assets/images/testing/validation_1.png) |
 | - | 283: E501 line too long | ![validation screenshot 1](assets/images/testing/validation_2.png) |
+| ✅ | All clear, no errors found | ![validation screenshot 1](assets/images/testing/validation_3.png) |
 
-    - Error 1 is left unresolved for layout reasons in the display terminal.
-    - Error 2 cannot be fixed ... unless I shorten the variables?
+## Manual testing
 
-### Manual testing
+| **validation** | **f(x)** | **description/expectation** | **comment** |
+|----------------|----------|----------------|----------|
+| ✅ | display_welcome_message() | display welcome message | . |
+| ✅ | start_menu() | option: WRONG INPUT, random words, white space, enter | . |
+| ✅ | start_menu() | option: yes | . |
+| ✅ | start_menu() | option: yEs | . |
+| ✅ | start_menu() | option: no | . |
+| ✅ | start_menu() | option: nO_ | . |
+| ✅ | start_menu() | option: x | . |
+| ✅ | start_menu(): option: yes and proceed to MAIN MENU? | Any input to proceed | ENTER or any input and ENTER work to proceed to Main Menu |
+| ✅ | main_menu() | option: x | prints statement and exits |
+| ✅ | main_menu() | option: a | see: get_health_stats() |
+| ✅ | main_menu() | option: b | see: calculate_avr_heartrate(); calculate_sum_cardio(); calculate_sum_breathwork() |
+| ✅ | get_health_stats() | prompt for 3 entries | . |
+| ✅ | get_health_stats() | error handling: wrong input | No input and ENTER is not accepted, white space is not accepted, error handling for ValueError works, error handling for out of num range works |
+| ✅ | update_worksheets() | writes on Google sheet including timestamp in format yy-mm-dd | . |
+| ✅ | update_worksheets() | displayes message of successful update of each worksheet | . |
+| ✅ | calculate_avr_heartrate() | fetch all data from worksheet minus header | . |
+| ✅ | calculate_avr_heartrate() | filter data for entries of last 7 days since today using datetime | . |
+| ✅ | calculate_avr_heartrate() | validate there's data of last 7 days | . |
+| ✅ | calculate_avr_heartrate() | calculate average and round to whole number | . |
+| ✅ | calculate_avr_heartrate() | error handling for invalid input | . |
+| ✅ | calculate_avr_heartrate() | output: message to user | . |
+| ✅ | def calculate_sum_cardio() | fetch all data from worksheet minus header | . |
+| ✅ | def calculate_sum_cardio() | filter data for entries of last 7 days since today using datetime | . |
+| ✅ | def calculate_sum_cardio() | validate there's data of last 7 days | . |
+| ✅ | def calculate_sum_cardio() | calculate sum and display hours and minutes using modulo | . |
+| ✅ | def calculate_sum_cardio() | error handling for invalid input | . |
+| ✅ | def calculate_sum_cardio() | output: message to user | . |
+| ✅ | calculate_sum_breathwork | fetch all data from worksheet minus header | . |
+| ✅ | calculate_sum_breathwork | filter data for entries of last 7 days since today using datetime | . |
+| ✅ | calculate_sum_breathwork | validate there's data of last 7 days | . |
+| ✅ | calculate_sum_breathwork | calculate sum | . |
+| ✅ | calculate_sum_breathwork | error handling for invalid input | . |
+| ✅ | calculate_sum_breathwork | output: message to user | . |
+| ✅ | main() | back to MAIN MENU | works in all cases by pressing ENTER or any key and ENTER |
+| ✅ | main() | exit() | works and displays output message to user |
+
 
 ### Bugs
 
@@ -150,7 +189,8 @@ See also [deployment documentation on Heroku's website](https://devcenter.heroku
 
 ## Technologies
 - Programming language: Python
-- Flake8 for code validation
+- Flake8 for on hand code validation
+- CI Python Linter for final code validation
 - gspread library for Google Sheets integration
 - Google API client installed with google-oauth2 using the Google Cloud Setup
 
