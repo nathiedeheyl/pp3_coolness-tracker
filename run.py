@@ -20,15 +20,11 @@ def display_welcome_message():
     Displays a friendly and encouraging welcome message
     upon start of the program.
     """
-    print()
-    print("Welcome, Friend! 🙂")
-    print()
-    print("You are in the right place")
-    print("if you want to work on lowering your resting heartbeat 🌱")
-    print()
-    print("Track your progress, one day at a time ⏱️")
-    print("towards a healthier heart 🌱")
-    print()
+    print("Welcome, Friend! 🙂\n\n"
+          "You are in the right place\n"
+          "if you want to work on lowering your resting heartbeat 🌱\n\n"
+          "Track your progress, one day at a time ⏱️\n"
+          "towards a healthier heart 🌱\n\n")
 
 
 def start_menu():
@@ -38,22 +34,19 @@ def start_menu():
     start_options = ('yes', 'no', 'x')
 
     while True:
-        print()
-        print("** START MENU **")
-        print()
-        print("yes = See the instructions")
-        print("no = Jump to Main Menu")
-        print("x = Exit the program")
+        print("** START MENU **\n\n"
+              "yes = See the instructions\n\n"
+              "no = Jump to Main Menu\n\n"
+              "x = Exit the program\n")
 
-        start_choice = input("\nDo you need instructions?\n").strip().lower()
+        start_choice = input("Do you need instructions?\n").strip().lower()
 
         if start_choice in start_options:
             return start_choice
 
         else:
-            print()
-            print("OPTION NOT AVAILABLE!")
-            print("Choose 'yes', 'no' or 'x' to proceed.")
+            print("\nOPTION NOT AVAILABLE!\n\n"
+                  "Choose 'yes', 'no' or 'x' to proceed.\n")
 
 
 def main_menu():
@@ -64,26 +57,21 @@ def main_menu():
     main_options = ('a', 'b', 'x')
 
     while True:
-        print()
-        print("** MAIN MENU **")
-        print("\nWhat would you like to do next?\n\n"
-              "Choose from option 'a' or 'b'\n")
-        print("a - Enter your daily stats")
-        print()
-        print("b - Request an analysis of your health data")
-        print()
-        print("x - Exit program")
-        print()
+        print("\n** MAIN MENU **\n\n"
+              "What would you like to do next?\n\n"
+              "Choose from option 'a' or 'b'\n\n"
+              "a - Enter your daily stats\n\n"
+              "b - Request an analysis of your health data\n\n"
+              "x - Exit program\n")
 
-        main_choice = input("\nOption:\n").strip().lower()
+        main_choice = input("Option:\n").strip().lower()
 
         if main_choice in main_options:
             return main_choice
 
         else:
-            print()
-            print("OPTION NOT AVAILABLE!")
-            print("Please type in either 'a', 'b', or 'x'")
+            print("\nOPTION NOT AVAILABLE!\n\n"
+                  "Please type in either 'a', 'b', or 'x'\n")
 
 
 def get_health_stats():
@@ -93,15 +81,12 @@ def get_health_stats():
     within a specified range, handle ValueError and a loop to prompt user
     to re-enter value if input was incorrect.
     """
-    print()
-    print("You will now be asked for 3 key metrics.")
-    print("Follow the prompts one after another to enter your health data.")
-    print()
-    
+    print("You will now be asked for 3 key metrics.\n"
+          "Follow the prompts to enter your health data.\n")
+
     # User data input of resting heart rate
-    print("Please enter the lowest heart rate during your last night's sleep.")
-    print("The number should be between 40-110.")
-    print()
+    print("Please enter the lowest heart rate of your last night's sleep.\n"
+          "The number should be between 40 - 110.\n")
 
     while True:
         heartrate_str = input("Enter heartrate here:\n").strip()
@@ -110,18 +95,13 @@ def get_health_stats():
             if 40 <= heartrate <= 120:
                 break
             else:
-                print()
-                print("Invalid input! Please enter a number between 40 - 120.")
-                print("In case of uncertainty, visit your doctor.")
-                print()
+                print("\nInvalid input! Please enter a number between 40-120\n"
+                      "In case of uncertainty, visit your doctor.\n\n")
         except ValueError:
-            print()
-            print("Invalid input! Please enter a number.")
-            print()
+            print("\nInvalid input! Please enter a number.\n\n")
 
     # User data input of daily minutes of cardio exercise
-    print("Please enter the total minutes of cardio exercice of today.")
-    print()
+    print("\nPlease enter the total minutes of cardio exercice of today.\n")
 
     while True:
         cardio_str = input("Enter exercice minutes:\n").strip()
@@ -130,18 +110,13 @@ def get_health_stats():
             if 0 <= cardio_min <= 1440:
                 break
             else:
-                print()
-                print("Invalid input! Please enter the total minutes you")
-                print("have spent performing cardiovascular exercise today.")
-                print()
+                print("\nInvalid input! Please enter the total minutes you\n"
+                      "have spent performing cardio exercise today.\n\n")
         except ValueError:
-            print()
-            print("Invalid input! Please enter a number.")
-            print()
+            print("\nInvalid input! Please enter a number.\n\n")
 
     # User data input of daily minutes of mindful breathing
-    print("Please enter the total minutes of minful braethwork of today.")
-    print()
+    print("\nPlease enter today's total minutes of breathing exercise.\n")
 
     while True:
         breathwork_str = input("Enter mindful breathing minutes:\n").strip()
@@ -150,14 +125,10 @@ def get_health_stats():
             if 0 <= breath_min <= 1440:
                 break
             else:
-                print()
-                print("Invalid input! Please enter the total minutes")
-                print("you have spent doing mindful breathwork today.")
-                print()
+                print("\nInvalid input! Please enter the total minutes\n"
+                      "you have spent doing mindful breathwork today.\n\n")
         except ValueError:
-            print()
-            print("Invalid input! Please enter a number.")
-            print()
+            print("\nInvalid input! Please enter a number.\n\n")
 
     return heartrate, cardio_min, breath_min
 
@@ -170,7 +141,7 @@ def update_worksheets(data):
     """
     heartrate, cardio_min, breath_min = data
 
-    print("Updating worksheets...")
+    print("\nUpdating worksheets...")
 
     # Open the corresponding worksheets
     heartrate_worksheet = SHEET.worksheet("heartrate")
@@ -184,15 +155,12 @@ def update_worksheets(data):
     breathwork_worksheet.append_row([timestamp, breath_min])
 
     # Message of success to user
-    print("Heartrate worksheet updated...")
-    print()
+    print("\nHeartrate worksheet updated...\n")
     time.sleep(2)
-    print("Cardio worksheet updated...")
-    print()
+    print("Cardio worksheet updated...\n")
     time.sleep(2)
-    print("Breathwork worksheet updated...")
-    print()
-    print("Spreadsheet has been successfully updated.")
+    print("Breathwork worksheet updated...\n")
+    print("Spreadsheet has been successfully updated.\n")
     time.sleep(2)
 
 
@@ -261,18 +229,15 @@ def calculate_sum_cardio():
 
     # Return 0 when less than 7 days of entries
     if not crd_week:
-        print()
-        print("No valid entries found for past 7 days of cardio exercise.")
-        print()
-        print("Keep tracking your daily exercise minutes to enable analysis.")
+        print("\nEntry for past 7 days of cardio exercise incomplete.\n\n"
+              "Keep tracking your daily exercise mins to enable analysis.\n\n")
         return 0
 
     # Calculate total time of cardio exercise
     crd_total = sum(crd_week)
     crd_h = crd_total // 60
     crd_min = crd_total % 60
-    print()
-    print(f"with {crd_h} hours and {crd_min} minutes of cardio")
+    print(f"\nwith {crd_h} hours and {crd_min} minutes of cardio\n\n")
 
     return crd_h, crd_min
 
@@ -300,21 +265,18 @@ def calculate_sum_breathwork():
                 if (today - tsmp).days <= 7:
                     brw_week.append(int(row[1]))
         except ValueError:
-            print(f"Invalid data on row {row}. Check the spreadsheet.")
+            print(f"\nInvalid data on row {row}. Check the spreadsheet.\n\n")
             continue
 
     # Return 0 when less than 7 days of entries
     if not brw_week:
-        print()
-        print("No valid entries found for past 7 days of breathing exercise.")
-        print()
-        print("Keep tracking your daily mindfulnes mins to enable analysis.")
+        print("\nEntry for past 7 days of breathing exercise incomplete.\n\n"
+              "Keep tracking your daily mindfulnes mins to enable analysis.\n")
         return 0
 
     # Calculate total time of breathwork exercise
     brw_mins = sum(brw_week)
-    print()
-    print(f"and {brw_mins} minutes of relaxing, mindful breathwork.")
+    print(f"\nand {brw_mins} minutes of relaxing, mindful breathwork.\n\n")
 
     return brw_mins
 
@@ -330,33 +292,26 @@ def main():
 
     # Start Menu option handling
     if start_choice == 'yes':
-        print()
-        print("--- How to use this program ---")
-        print()
-        print("We recommend using a smart wearable or similar.")
-        print()
-        print("At the end of each day, enter your daily stats: ")
-        print("    • Lowest heart rate during your last sleep")
-        print("    • Total minutes of cardio exercises of that day")
-        print("    • Total minutes of intentional breathwork in that day")
-        print()
-        print("The program will let you choose between: Enter your data")
-        print("Or request an analysis of your current health state.")
-        print()
-        print("You can always return to the main menu.")
-        print()
-        print("Restart the program to see the instructions again.")
+        print("\n--- How to use this program ---\n"
+              "\nWe recommend using a smart wearable or similar.\n"
+              "\nAt the end of each day, enter your daily stats: \n"
+              "    • Lowest heart rate during your last sleep\n"
+              "    • Total minutes of cardio exercises of that day\n"
+              "    • Total minutes of intentional breathwork in that day\n"
+              "\nThe program will let you choose between: Enter your data\n"
+              "or request an analysis of your current health state.\n"
+              "\nYou can always return to the main menu.\n"
+              "\nRestart the program to see the instructions again.\n")
 
         # Proceed to main menu confirmation
-        print("\nProceed to MAIN MENU?")
+        print("Proceed to MAIN MENU?")
         input("Press ENTER\n")
 
     elif start_choice == 'no':
-        print("Redirecting to Main Menu...")
+        print("\nRedirecting to Main Menu...")
 
     elif start_choice == 'x':
-        print()
-        print("Bye! See you soon 🙂")
+        print("\nBye! See you soon 🙂")
         exit()
 
     # Run Main Menu Loop
@@ -376,15 +331,12 @@ def main():
             hr_rounded = calculate_avr_heartrate()
             crd_h, crd_min = calculate_sum_cardio()
             brw_mins = calculate_sum_breathwork()
-            print()
-            print("Good job! Keep tracking your daily stats for more insight.")
-            print()
-            print("Go back to Main Menu?")
+            print("\nGood job! Keep tracking your stats for more insight.\n\n"
+                  "Go back to Main Menu?\n")
             input("Press ENTER\n")
 
         elif main_choice == 'x':
-            print()
-            print("Bye! See you soon 🙂")
+            print("\nBye! See you soon 🙂\n")
             exit()
 
 
