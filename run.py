@@ -216,7 +216,7 @@ def calculate_avr_heartrate():
             if (today - tsmp).days <= 7:
                 hr_week.append(int(row[1]))
         except ValueError:
-            print(f"Invalid time format: {tsmp_str}")
+            print(f"Error parsing data: {tsmp_str}")
 
     # Calculate average of last week's entries
     if hr_week:

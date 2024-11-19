@@ -116,6 +116,9 @@ See also [deployment documentation on Heroku's website](https://devcenter.heroku
 
 ### Future Features
 
+- More detailed error handling on inputs: Individual error messages for empty inputs, negative number inputs, empty or whitespace inputs and so on.
+- Implement 'exit' option during input.
+
 ## Testing
 
 ### Testing User Stories
@@ -157,4 +160,4 @@ See also [deployment documentation on Heroku's website](https://devcenter.heroku
 
 - Code Institute's walkthrough project **Love Sandwiches** introduced me to most of the basic functions, module imports and methods.
 - As an initial inspiration on how to get started on my project idea I used a [YouTube tutorial](https://www.youtube.com/watch?v=ZBx7oWCJ4aY) that introduced how to use while true loops to build menus.
-- To learn about more python string methods, for the input and it's validation, the datetime module, list comprehensions, try/except, handling of tuples and more research about built-in functions I have mainly relied on the [W3Schools website](https://www.w3schools.com/python/), sometimes on [Geeksforgeeks](https://www.geeksforgeeks.org/python-datetime-strptime-function/), especially for the datetime module strptime() function, and [Stackoverflow](https://stackoverflow.com/).
+- To learn about more python string methods, for the input and it's validation, the datetime module, list comprehensions, handling of tuples and more research about built-in functions I have mainly relied on the [W3Schools website](https://www.w3schools.com/python/), sometimes on [Geeksforgeeks](https://www.geeksforgeeks.org/python-datetime-strptime-function/), especially for the datetime module strptime() function, and [Stackoverflow](https://stackoverflow.com/).
