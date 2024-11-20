@@ -69,6 +69,10 @@ The data entered is stored anonymously, and the option for last week's analysis 
 </details>
 
 ## Deployment
+
+<details>
+<summary>Open to view detailed deployment steps</summary>
+
 Before deploying, ensure you've completed the following:
 - Remove unnecessary imports used for testing that aren't needed in the final Heroku deployment.
 - Add a line using `\n` after input statements for technical reasons.
@@ -95,7 +99,11 @@ See live Project Terminal here: https://coolness-tracker-7669906b729c.herokuapp.
 
 See also [deployment documentation on Heroku's website](https://devcenter.heroku.com/articles/git). As well as [more information about cloning a Github repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository).
 
+</details>
+
 ## Features
+
+### Existing Features
 
 1. <u>Start of the program with a welcoming introductory message</u>
 
@@ -277,7 +285,7 @@ See also [deployment documentation on Heroku's website](https://devcenter.heroku
 | - | 283: E501 line too long | ![validation screenshot 1](assets/images/testing/validation_2.png) |
 | ✅ | All clear, no errors found | ![validation screenshot 1](assets/images/testing/validation_3.png) |
 
-## Manual testing
+### Manual testing
 
 | **validation** | **f(x)** | **description/expectation** | **comment** |
 |----------------|----------|----------------|----------|
