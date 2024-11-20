@@ -30,7 +30,7 @@ The data entered is stored anonymously, and the option for last week's analysis 
 </details>
 
 <details>
-<summary>Flowchart.2</summary>
+<summary>Flowchart.2 (final version)</summary>
 
 ![Process flowchart 1](assets/images/workflow/python_program_flowchart_2.png)
 
@@ -42,7 +42,7 @@ The data entered is stored anonymously, and the option for last week's analysis 
 ## User stories 
 
 <details>
-<summary>**As a user …**</summary>
+<summary>As a user …</summary>
 
 + …I want a welcome message when I start the program that explains the purpose of the application and how it can benefit me.
 
@@ -52,28 +52,19 @@ The data entered is stored anonymously, and the option for last week's analysis 
 
 + …I want to be able to see a simple summary of my recent stats in one command, so I don’t have to look at long reports if I don’t want to.
 
-+ …I want to be able to see if my resting heart rate is trending up or down.
-
-+ …I want to understand how my cardio and relaxation practices impact my resting heart rate over time so that I keep up the healthy habits in order to lower it effectively.
-
 + …I want to log my daily lowest heart rate during sleep, total minutes of cardiovascular exercise, and total minutes of breathing exercises, so I can see the effect of my habits on my heart health over time.
 
 + …I want the program to notify me of the correct format and give me another chance to input valid data, if I input incorrect data (e.g., text instead of numbers etc.).
 
 + …I want the application to guide me back to the main input prompt after I make a mistake, so I can correct it easily without restarting.
 
-+ …I want the analysis feedback to feel positive and helpful, highlighting any progress or improvements to keep me motivated.
++ …I want the analysis feedback to feel positive and helpful to keep me motivated.
 
 + …I want to receive a motivational message in the summary when I run an analysis, so I can feel encouraged to track my data daily and maintain consistentcy.
 
-+ …I want a detailed view of correlations between my heart rate and my exercise and breathing practices to understand the effect of my health habits on the resting heartrate.
-
 + …I want to be able to exit the program smoothly and know that my data is saved, so I feel safe in using the application correctly and therefore trust the data analysis.
 
-!!!
-+ ...I want the application to allow me to skip logging on some days, without affecting my trend analysis, so I feel comfortable using it at my own pace.  
-
-!!!
++ ...I do NOT want to necessarily have to track my data daily. I want to be able to skip days without it affecting my weekly summary, so I feel comfortable using the program at my own pace. 
 
 </details>
 
@@ -106,28 +97,177 @@ See also [deployment documentation on Heroku's website](https://devcenter.heroku
 
 ## Features
 
-1. Start of the program
+1. <u>Start of the program with a welcoming introductory message</u>
 
-    • Welcome message and start menu
+    ![Welcome message](assets/images/features/feature_2_welcome3.png)
 
-2. SOME FEATURE
+2. <u>Display of START MENU with input</u>
 
-    • Data validation: Regular resting heart rate [Source](https://www.mayoclinic.org/healthy-lifestyle/fitness/expert-answers/heart-rate/faq-20057979#:~:text=Answer%20From%20Edward%20R.%20Laskowski,to%20100%20beats%20per%20minute.); Maximum cardio minutes [Source](https://odphp.health.gov/our-work/nutrition-physical-activity/physical-activity-guidelines/current-guidelines/top-10-things-know) - But I decided to go a maximum input of 24h = 1.440 min. as for the breathwork minutes
+    ![start menu](assets/images/features/feature_3_startmenu.png)
+
+    The START MENU presents the user with two options:
+
+    1. View the program's instructions.
+    2. Skip this step and proceed directly to the MAIN MENU.
+
+    Additionally, the option to exit the program is always available in the menus.
+
+3. <u>Display of instruction of the program</u>
+
+    ![instructions](assets/images/features/feature_4_instructions.png)
+
+    The program prompts the user to type "yes" and press ENTER to view the instructions. Upon entering "yes," the instructions are displayed as shown above. To give users enough time to read the instructions, the program enforces manual input before proceeding to the MAIN MENU.
+
+4. <u>Handling of Error Inputs during START MENU</u>
+
+    ![error inputs in start menu](assets/images/features/feature_5_difinput.png)
+
+    The input field is designed to handle variations in capitalization and formatting of the required input "yes", using the `.lower()` method. By using the `strip()` method, extra whitespace is removed, allowing "yes" and "no" to be validated correctly, even if the input has leading or trailing spaces.
+
+5. <u>Handling Random Input upon ENTER to proceed to MAIN MENU</u>
+
+    ![random input to proceed to main menu](assets/images/features/feature_6_rdminput.png)
+
+    The validation for proceeding to the MAIN MENU accepts any input, including an empty string. As long as the ENTER key is pressed, the program advances to the MAIN MENU.
+
+6. <u>Display of MAIN MENU</u>
+
+    ![display main menu](assets/images/features/feature_7_mainmenu.png)
+
+    The MAIN MENU acts as the program's anchor menu, to which the user always returns after executing a command. It offers the following two options:
+    a) Enter your daily stats.
+    b) Request an analysis of your health stats.
+
+    - Option a prompts the user to input three key health metrics:
+        1. Lowest heart rate during sleep.
+        2. Total minutes of cardiovascular exercise for the day.
+        3. Total minutes of mindful breathing exercises for the day.
+    - Option b provides a weekly summary, fetching the data of last 7 days of entries including:
+        1. The current average resting heart rate.
+        2. The total amount of cardiovascular exercise performed.
+        2. The total amount of mindful breathing exercises completed.
+    
+    As previously mentioned, the option to exit the program (option 'x') is always available in the menu.
+
+7. <u>Interactive Element: User Enters Health Stats - Resting Heartbeat</u>
+
+    ![enter health metric prompt 1](assets/images/features/feature_8_optionainput1.png)
+
+    After selecting option a) from the MAIN MENU, the user is presented with a brief message explaining the process and what data to enter. Each prompt includes a clear explanation of the required data.
+
+8. <u>Interactive Element: User Enters Health Stats - Resting Heartbeat - Correct Input</u>>
+
+    The user is expected to provide a whole number without decimals or trailing whitespace. Upon entering a valid input, the program moves on to the next health metric prompt.
+
+    Since the program fetches data entries from the last 7 days rather than the last 7 inputs, the user can technically provide multiple entries per day. Entering the lowest heart rate of the day's resting period multiple times should not significantly impact the overall average, as the user’s heart rate is assumed to remain relatively stable over time.
+
+9. <u>Interactive Element: User Enters Health Stats - Resting Heartbeat - Incorrect Input</u>
+
+    ![wrong input health metric prompt 1.1](assets/images/features/feature_9_optionainput2.png)
+    ![wrong input health metric prompt 1.2](assets/images/features/feature_10_optionainput3.png)
+    ![wrong input health metric prompt 1.3](assets/images/features/feature_10_optionainput3.png)
+
+    The error handling recognizes two types of errors:
+
+    - ValueError: Triggered when the input is not numeric (e.g., a word or non-integer value).
+    - Invalid Range: Triggered when the input does not fall within a specified range.
+
+    The program requires an integer for this input. Any other input triggers the message: "Invalid input. Please enter a number." Additionally, the program checks whether the number falls within a healthy resting heart rate range for adults. If the input is outside this range, the user is prompted with a message suggesting a valid range.
+
+    Example input validation includes references to healthy ranges for adults. See [this source for reference.](https://www.mayoclinic.org/healthy-lifestyle/fitness/expert-answers/heart-rate/faq-20057979#:~:text=Answer%20From%20Edward%20R.%20Laskowski,to%20100%20beats%20per%20minute.)
+
+    After each incorrect input, the user is asked to try again by entering a valid number or a number within the specified range.
+
+10. <u>Interactive Element: User Enters Health Stats - Cardio minutes</u>
+
+    ![enter health metric prompt 2](assets/images/features/feature_12_optionainput1.png)
+
+    After successfully entering the first health metric (resting heartbeat), the program prompts the user to input the second metric: total minutes of cardiovascular exercise for that day. This prompt is accompanied by a clear and straightforward message.
+
+11. <u>Interactive Element: User Enters Health Stats - Cardio minutes - Correct Input</u>
+
+    Upon entering valid data for this metric, the program prompts the user for the third and final health metric: total minutes of mindful breathing exercises for the day.
+
+12. <u>Interactive Element: User Enters Health Stats - Cardio minutes - Incorrect Input</u>
+
+    ![wrong input health metric prompt 2.1](assets/images/features/feature_13_optionainput2.png)
+    ![wrong input health metric prompt 2.2](assets/images/features/feature_14_optionainput3.png)
+
+    The program requires an integer input for this metric. If the input is non-numeric (e.g., a word or float), the program displays the error message: "Invalid input! Please enter a number."
+
+    ![wrong input health metric prompt 2.3](assets/images/features/feature_15_optionainput4.png)
+
+    While there is no universal consensus on how many minutes of cardio exercise per day is ideal or excessive, the program includes a check to prevent unrealistic inputs. A maximum limit of 1,440 minutes (24 hours) is enforced using an if-statement. This ensures that the input does not exceed the total minutes in a day. See [this source](https://odphp.health.gov/our-work/nutrition-physical-activity/physical-activity-guidelines/current-guidelines/top-10-things-know) for weekly exercise recommendations.
+    
+    After any incorrect input, the user is prompted to try again by providing a valid number within the specified range.
+
+13. <u>Interactive Element: User Enters Health Stats - Breathwork minutes - Correct Input</u>
+
+    ![enter health metric prompt 3](assets/images/features/feature_15.2_optionainput.png)
+
+    After the user successfully enters a valid integer for breathwork minutes, the program prepares the data for submission to the Google Sheet.
+
+14. <u>Interactive Element: User Enters Health Stats - Breathwork minutes - Incorrect Input</u>
+
+    ![wrong input health metric prompt 3.1](assets/images/features/feature_16_optionainput1.png)
+    ![wrong input health metric prompt 3.2](assets/images/features/feature_17_optionainput2.png)
+
+    If the input is invalid (e.g., non-numeric, float), the program displays an error message: "Invalid input! Please enter a number."
+
+    ![wrong input health metric prompt 3.3](assets/images/features/feature_18_optionainput3.png)
+
+   The program enforces a realistic upper limit of 1,440 minutes (equivalent to 24 hours) using an if-statement. This ensures that the user cannot input an unrealistic duration. The loop continues until a valid integer within the acceptable range is provided.
+
+15. <u>After successfull input of all health metrics, health data is written in a specified Google sheet with Google API client</u>
+
+    ![update_worksheets(data)](assets/images/features/feature_19_updateworksheet.png)
+
+    Once all health metrics are successfully entered, the program writes the data to a specified Google Sheet using the Google API client. 
+
+16. <u>Redirect to MAIN MENU after a time delay using time module</u>
+
+    ![redirect to main menu](assets/images/features/feature_20_backtomain.png)
+
+    After successfully saving the data, the program redirects the user to the main menu following a short delay. The delay is implemented using the time module.
+
+17. <u>Requesting analysis of weekly summary</u>
+
+    ![weekly summary](assets/images/features/feature_21_weeklysum.png)
+
+    The program fetches data entries from the last 7 days. It calculates and displays the following:
+    - The average resting heart rate, rounded to the nearest integer.
+    - Total minutes of cardiovascular exercise, displayed in hours and minutes.
+    - Total minutes of breathwork practice, presented as a single total in minutes.
+    
+    This feature gives the user an overview of their weekly health trends.
+
+18. <u>Motivational feedback after analysis</u>
+
+    ![motivational message](assets/images/features/feature_22_motivation.png)
+
+    After presenting the weekly summary, the program provides a motivational message to encourage users to maintain consistent tracking and improve their health habits.
+
+19. <u>Redirecting to MAIN MENU after analyis</u>
+
+    ![back to main option](assets/images/features/feature_23_backtomain.jpeg)
+
+    After viewing the weekly summary, the user is prompted to press ENTER (or any input and ENTER) to return to the main menu. This ensures that users have sufficient time to review their results before making further selections. 
+    
+    The Main Menu offers the familiar options, including the ability to safely exit the program.
 
 ### Future Features
 
-- More detailed error handling on inputs: Individual error messages for empty inputs, negative number inputs, empty or whitespace inputs and so on.
-- Implement 'exit' option during input.
-- Handling invalid date format and skipping rows (unlikely to occur).
-- Handling error message if spreadsheet/worksheet are unavailable/deleted.
+- More detailed error handling for inputs, including: Individual error messages for empty inputs, negative numbers, and whitespace inputs.
+- Implement an 'exit' option during data entry.
+- Handle invalid date formats and skip rows with invalid entries in case of error data transmission by the program.
+- Display an error message if the spreadsheet/worksheet is unavailable or deleted.
+- Separate inputs for resting heart rate, cardio minutes, and breathing exercises to accommodate multiple entries per day (user-friendlyness) without affecting analysis.
+- Provide a summary of today’s entries after choosing option a) to help avoid duplicate data entries.
+- Incorporate security prompts, such as flagging highly fluctuating resting heart rates, to encourage users to consult a doctor.
+- Implement trend analysis comparing weekly summaries to long-term data, highlighting upward or downward trends in health metrics.
+
 
 ## Testing
-
-### Testing User Stories
-
-| **User story** | **Evaluation** |
-|----------------|----------------|
-| - | - |
 
 ### Code validation
 
@@ -175,7 +315,7 @@ See also [deployment documentation on Heroku's website](https://devcenter.heroku
 | ✅ | calculate_sum_breathwork | error handling for invalid input | . |
 | ✅ | calculate_sum_breathwork | output: message to user | . |
 | ✅ | main() | back to MAIN MENU | works in all cases by pressing ENTER or any key and ENTER |
-| ✅ | main() | exit() | works and displays output message to user |
+| ✅ | main() | exit() | works on all menus and displays output message to user |
 
 
 ### Bugs
@@ -187,6 +327,10 @@ See also [deployment documentation on Heroku's website](https://devcenter.heroku
 | Input upon main_menu redirects to start_menu instaed of displaying main_choice options | ![main menu input issue](assets/images/testing/bug_2.png) | add return statement to main_menu function; remove start_menu loop; comment out validate to proceed to main_menu after instructions; remove main_menu call from elif "no" to jump instructions; |
 | health data input validation error | ![output on display error](assets/images/testing/bug_3.png) | put conversion ```int(heartrate_str)``` inside try/except code and wrap everything in a loop to give user a chance to put in right heartrate upon mistake |
 | Use of wrong emoji leads to display of other symbols in deployed version | ![output on display error](assets/images/testing/bug_4.png) | Replace with neutral emoji |
+
+### Known bugs
+
+When the program is left and allowed to "sleep," input becomes impossible on certain browsers (Safari, Opera, and Chrome). Additionally, the terminal layout differs when accessed via Safari. 
 
 ## Technologies
 - Programming language: Python
